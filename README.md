@@ -10,12 +10,12 @@
 ## Запуск всех сервисов с помощью Docker Compose
 3. Запустить проект с помощью Docker Compose:
 ```sh
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 4. Остановка всех сервисов Docker Compose:
 ```sh
-docker-compose down -v
+docker compose down -v
 ```
 
 ## Лицензия
