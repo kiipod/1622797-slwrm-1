@@ -7,58 +7,13 @@
 1. Клонировать репозиторий
 2. Перейти в директорию проекта
 
-### Установка зависимостей для Django
-
-3. Создать виртуальное окружение и активировать его:
-```sh
-python -m venv venv
-source venv/bin/activate  
-```
-
-4. Установить зависимости:
-```sh
-pip install -r requirements.txt
-```
-
-5. Применить миграции для настройки базы данных:
-```sh
-python manage.py makemigrations
-python manage.py migrate
-```
-
-6. Создать суперпользователя для доступа к административной панели:
-```sh
-python manage.py createsuperuser
-```
-
-### Установка зависимостей для React
-7. Перейти в директорию клиента и установить зависимости:
-```sh
-cd frontend
-npm install
-```
-
-## Запуск Backend приложения
-8. Запустить сервер Django:
-```sh
-python manage.py runserver
-```
-
-## Запуск React приложения
-9. Запустить React приложение:
-```sh
-npm install
-npm run build
-npm start
-```
-
 ## Запуск всех сервисов с помощью Docker Compose
-10. Запустить проект с помощью Docker Compose:
+3. Запустить проект с помощью Docker Compose:
 ```sh
 docker-compose up -d --build
 ```
 
-11. Остановка всех сервисов Docker Compose:
+4. Остановка всех сервисов Docker Compose:
 ```sh
 docker-compose down -v
 ```
