@@ -1,0 +1,43 @@
+@import '../../../styles/media';
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.cartButton {
+	display: flex; // Устанавливаем display: flex, чтобы кнопка была видна в Header
+	align-items: center;
+	margin-left: 10px; // Оставляем отступы для кнопки
+	margin-right: 10px;
+	cursor: pointer;
+	position: relative; // Устанавливаем относительное позиционирование
+
+	img {
+		width: 30px; // Размеры изображения кнопки
+		height: 30px;
+
+		@include tablet {
+			width: 25px;
+			height: 25px;
+		}
+
+		@include mobile {
+			width: 25px;
+			height: 25px;
+		}
+
+		@include mobile-small {
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	.cartCount {
+		position: absolute; // Устанавливаем абсолютное позиционирование для счетчика
+		top: -5px;
+		right: -5px;
+		background: var(--color-red);
+		color: var(--color-main);
+		border-radius: 50%;
+		padding: 2px 5px;
+		font-size: 12px;
+	}
+}

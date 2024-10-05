@@ -1,0 +1,271 @@
+@import '../../../styles/media';
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.cartPage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 1440px;
+	padding: 110px 70px 20px 70px;
+	margin: 0 auto;
+
+	h1 {
+		margin-bottom: 20px;
+		font-size: 2rem;
+		color: var(--color-black);
+	}
+
+	.summaryLeft {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.cartContainer {
+		display: flex;
+		flex-direction: row-reverse;
+		gap: 20px;
+		width: 100%;
+		max-width: 1200px;
+
+		@include tablet {
+			flex-direction: column;
+		}
+
+		@include mobile {
+			flex-direction: column;
+		}
+
+		@include mobile-small {
+			flex-direction: column;
+		}
+	}
+
+	.cartSummary {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid #eee;
+		box-shadow: var(--box-shadow);
+		padding: 20px;
+		border-radius: 5px;
+		background-color: var(--color-light-main);
+		margin-bottom: 20px;
+		width: 300px;
+		max-width: 400px;
+
+		@include tablet {
+			width: 100%;
+			max-width: none;
+		}
+
+		@include mobile {
+			width: 100%;
+			max-width: none;
+		}
+
+		.totalPrice, .totalItems {
+			font-size: 1.8rem;
+			font-family: Iosevka, sans-serif;
+			margin-bottom: 10px;
+
+			@include mobile {
+				font-size: 1.5rem;
+			}
+		}
+
+		.summaryRight {
+
+			.checkoutButton {
+				width: 100%;
+				padding: 10px;
+				background-color: var(--color-red);
+				color: #fff;
+				border: none;
+				border-radius: 5px;
+				font-size: 16px;
+				cursor: pointer;
+				margin-bottom: 10px;
+				transition: background-color 0.3s;
+
+				&:hover {
+					background-color: var(--color-blue);
+				}
+
+				&:disabled {
+					background-color: var(--color-light-grey);
+					cursor: not-allowed;
+				}
+			}
+		}
+
+		.agreement {
+			margin-top: 10px;
+			font-size: 0.8rem; /* уменьшить шрифт */
+
+			label {
+				display: flex;
+				align-items: center; /* выровнять по центру по вертикали */
+				gap: 5px; /* уменьшить промежуток между чекбоксом и текстом */
+				cursor: pointer;
+			}
+
+			input[type="checkbox"] {
+				margin-right: 5px;
+				margin-top: 0; /* выравнивание чекбокса */
+			}
+
+			span {
+				font-size: 0.9rem;
+				line-height: 1.2;
+			}
+		}
+
+
+		.offerLink {
+				color: var(--color-blue);
+				text-decoration: underline;
+				font-weight: bold;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+
+	.cartItems {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+
+		@include tablet {
+			order: 2;
+		}
+
+		@include mobile {
+			order: 2;
+		}
+
+		@include mobile-small {
+			order: 2;
+		}
+	}
+
+	.cartItem {
+		display: flex;
+		align-items: center;
+		color: var(--color-black);
+		border-radius: 10px;
+		background: var(--color-light-main);
+		box-shadow: var(--box-shadow);
+		padding: 20px;
+		position: relative;
+
+		.cartItemImage {
+			width: 200px;
+			height: auto;
+			border-radius: 10px;
+			margin-right: 20px;
+
+			img {
+				width: 100%;
+				height: auto;
+				border-radius: 10px;
+			}
+		}
+
+		.cartItemDetails {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+
+			h2 {
+				font-size: 1.5rem;
+				margin-bottom: 10px;
+			}
+
+			.cartItemPrice {
+				font-size: 1.2rem;
+				font-weight: bold;
+				margin-left: auto;
+				text-align: right;
+
+				p {
+					margin-bottom: 10px;
+				}
+
+				.removeButton {
+					background-color: var(--color-red);
+					color: var(--color-white);
+					border: none;
+					border-radius: 5px;
+					padding: 10px 20px;
+					cursor: pointer;
+					transition: background-color 0.3s;
+
+					&:hover {
+						background-color: var(--color-blue);
+					}
+				}
+			}
+		}
+	}
+
+	.emptyCart {
+		text-align: center;
+		padding: 2rem;
+		background-color: var(--color-light-main);
+		border-radius: 10px;
+		box-shadow: var(--box-shadow);
+		width: 100%;
+		max-width: 600px;
+
+		.emptyCartIcon {
+			width: 100px;
+			height: 100px;
+			margin-bottom: 1rem;
+		}
+
+
+		.continueShopping {
+			display: inline-block;
+			padding: 0.8rem 1.5rem;
+			background-color: var(--color-red);
+			color: var(--color-white);
+			text-decoration: none;
+			border-radius: 5px;
+			font-size: 1.4rem;
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: var(--color-blue);
+			}
+		}
+	}
+
+	.backButton {
+		width: 200px;
+		flex: 1;
+		padding: 10px;
+		background-color: var(--color-red);
+		color: var(--color-main);
+		border: none;
+		border-radius: 5px;
+		font-size: 16px;
+		cursor: pointer;
+		margin: 20px 5px 20px 5px;
+
+		&:hover {
+			background-color: var(--color-blue);
+		}
+	}
+
+	.privacyPolicyLink {
+		margin-top: 10px;
+		font-size: 1.2rem;
+		color: var(--color-red);
+		text-decoration: underline;
+		cursor: pointer;
+	}
+}

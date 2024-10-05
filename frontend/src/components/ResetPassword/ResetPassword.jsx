@@ -1,0 +1,55 @@
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import styles from './ResetPassword.module.scss';
+import ChangePassword from '../ChangePassword/ChangePassword';
+
+const ResetPassword = () => {
+  const { uidb64, token } = useParams();
+  const [isValidToken, setIsValidToken] = useState(false);
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const validateToken = async () => {
+      if (!uidb64 || !token) {
+        setMessage('Неверная ссылка для сброса пароля.');
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/reset-password/${uidb64}/${token}/`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          setIsValidToken(true);
+        } else {
+          const errorData = await response.json();
+          setMessage(errorData.error || 'Ссылка для сброса пароля недействительна или устарела.');
+        }
+      } catch (error) {
+        console.error('Error validating token:', error);
+        setMessage('Произошла ошибка при проверке ссылки. Попробуйте позже.');
+      }
+    };
+
+    validateToken();
+  }, [uidb64, token]);
+
+  if (isValidToken) {
+    return <ChangePassword isResetPassword={true} uidb64={uidb64} token={token} />;
+  }
+
+  return (
+    <div className={styles.resetPassword}>
+      <h2>Сброс пароля</h2>
+      {message && <p className={styles.message}>{message}</p>}
+      {!isValidToken && !message && <p>Проверка ссылки для сброса пароля...</p>}
+    </div>
+  );
+};
+
+export default ResetPassword;

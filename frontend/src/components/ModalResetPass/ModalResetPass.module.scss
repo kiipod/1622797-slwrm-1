@@ -1,0 +1,60 @@
+@import '../../styles/media';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.modalOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.modal {
+	background: var(--color-main);
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modalContent {
+	text-align: center;
+}
+
+.button_reset {
+	flex: 1;
+	padding: 10px;
+	background-color: var(--color-red);
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	margin: 10px 5px;
+
+	&:hover {
+		background-color: var(--color-blue);
+	}
+
+	&:disabled {
+		background-color: var(--color-light-grey);
+		cursor: not-allowed;
+	}
+
+	@include mobile {
+		width: 100%;
+		margin: 0;
+	}
+}
+
+.emailInput {
+	width: 100%;
+	padding: 10px;
+	margin-top: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}

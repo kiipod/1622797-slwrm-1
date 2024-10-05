@@ -1,0 +1,31 @@
+// Стилизация политики конфиденциальности
+.privacyPolicy {
+	padding: 100px 70px 20px 70px;
+	line-height: 1.6;
+
+	h1 {
+		margin-bottom: 20px;
+		font-size: 24px;
+	}
+
+	p {
+		margin-bottom: 10px;
+	}
+
+	.backButton {
+		width: 200px;
+		flex: 1;
+		padding: 10px;
+		background-color: var(--color-red);
+		color: var(--color-main);
+		border: none;
+		border-radius: 5px;
+		font-size: 16px;
+		cursor: pointer;
+		margin: 0 5px 20px 5px;
+
+		&:hover {
+			background-color: var(--color-blue);
+		}
+	}
+}

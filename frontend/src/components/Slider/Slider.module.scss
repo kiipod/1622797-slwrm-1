@@ -1,0 +1,11 @@
+@import '../../styles/media';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.slider {
+	position: relative;
+	overflow: hidden;
+	width: 100%; /* Используем 100% ширины контейнера */
+	height: 100%; /* Базовая высота для десктопов */
+
+}
