@@ -6,14 +6,20 @@
 ## Установка
 1. Клонировать репозиторий
 2. Перейти в директорию проекта
+3. Перейти в директорию backend и скопировать .env-файл
+
+```
+cd backend/
+cp .env.prod.example .env
+```
 
 ## Запуск всех сервисов с помощью Docker Compose
-3. Запустить проект с помощью Docker Compose:
+4. Запустить проект с помощью Docker Compose:
 ```sh
 docker compose up -d --build
 ```
 
-4. Остановка всех сервисов Docker Compose:
+5. Остановка всех сервисов Docker Compose:
 ```sh
 docker compose down -v
 ```
