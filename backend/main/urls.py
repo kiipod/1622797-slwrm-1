@@ -5,8 +5,9 @@ from .views import (
     UserProfileView, landing_page, category_list, category_detail, product_list, product_detail,
     UserDetailView, AvatarUpdateView, MessageListView, MessageCreateView, ConfirmPasswordResetView,
     CartListView, CartCreateView, TelegramWebhookView, VIPMessageListView, VIPMessageCreateView, LongPollingMessageView,
-    CartRemoveView, verify_token, LogoutView
+    CartRemoveView, verify_token, LogoutView, ResetChangePasswordView
 )
+
 urlpatterns = [
     path('', landing_page, name='landing_page'),
     path('register/', UserRegistrationView.as_view(), name='register'),
@@ -20,6 +21,7 @@ urlpatterns = [
     path('reset-password/', ResetPasswordView.as_view(), name='reset_password'),
     path('reset-password/<str:uidb64>/<str:token>/', ConfirmPasswordResetView.as_view(), name='password_reset_confirm'),
     path('change-password/', ChangePasswordView.as_view(), name='change_password'),
+    path('reset-change-password/', ResetChangePasswordView.as_view(), name='reset_change_password'),
 
     path('categories/', category_list, name='category_list'),
     path('categories/<int:category_id>/', category_detail, name='category_detail'),
@@ -38,6 +40,4 @@ urlpatterns = [
     path('cart/', CartListView.as_view(), name='cart-list'),
     path('cart/create/', CartCreateView.as_view(), name='cart-create'),
     path('cart/remove/<int:item_id>/', CartRemoveView.as_view(), name='cart-remove'),
-
 ]
-

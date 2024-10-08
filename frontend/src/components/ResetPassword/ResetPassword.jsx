@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styles from './ResetPassword.module.scss';
-import ChangePassword from '../ChangePassword/ChangePassword';
+import ResetChangePassword from "../ResetChangePassword/ResetChangePassword";
 
 const ResetPassword = () => {
   const { uidb64, token } = useParams();
@@ -40,7 +40,7 @@ const ResetPassword = () => {
   }, [uidb64, token]);
 
   if (isValidToken) {
-    return <ChangePassword isResetPassword={true} uidb64={uidb64} token={token} />;
+    return <ResetChangePassword isResetPassword={true} uidb64={uidb64} token={token} />;
   }
 
   return (

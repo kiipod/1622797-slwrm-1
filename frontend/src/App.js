@@ -32,6 +32,7 @@ import { CartProvider } from './context/CartContext';
 import OfferAgreement from './pages/ShopPage/OfferAgreement/OfferAgreement';
 import PaymentInstructionsPage from "./pages/ShopPage/PaymentInstructionsPage/PaymentInstructionsPage";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
+import ResetChangePassword from "./components/ResetChangePassword/ResetChangePassword";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -68,6 +69,7 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/auth" element={<Authorization />} />
               <Route path="/change-password" element={<ChangePassword />} />
+              <Route path="/reset-change-password" element={<ResetChangePassword />} />
               <Route path="/reset-password/:uidb64/:token" element={<ResetPassword />} />
               <Route path="/profile" element={isLoggedIn ? <Profile /> : <Authorization redirectBack="/profile" />} />
               <Route path="/lessons" element={<LessonsPage />} />
