@@ -29,8 +29,8 @@ const PromoPage = () => {
   ];
 
   const handleAddToCart = async () => {
-    if (!user || !user.isActive) { // Проверка на авторизацию и активность
-      navigate('/auth'); // Редирект на страницу авторизации
+    if (!user) {
+      navigate('/auth');
       return;
     }
 
