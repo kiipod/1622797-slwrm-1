@@ -68,8 +68,8 @@ export const AuthProvider = ({ children }) => {
   // Функция выхода
   const logout = async () => {
     const token = localStorage.getItem('token');
-    if (token) {
-      try {
+    try {
+      if (token) {
         await fetch('/api/logout/', {
           method: 'POST',
           headers: {
@@ -77,14 +77,16 @@ export const AuthProvider = ({ children }) => {
             'Authorization': `Token ${token}`,
           },
         });
-      } catch (error) {
-        console.error('Ошибка при выходе из системы:', error);
       }
+    } catch (error) {
+      console.error('Ошибка при выходе из системы:', error);
+    } finally {
+      // Очищаем данные локально вне зависимости от того, завершился ли запрос успешно
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      setIsLoggedIn(false);
+      setUser(null);
     }
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
-    setIsLoggedIn(false);
-    setUser(null);
   };
 
   return (

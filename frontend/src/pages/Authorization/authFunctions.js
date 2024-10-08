@@ -1,5 +1,5 @@
 // Функция отвечает за получение CSRF-токена из куки
-function getCookie(name) {
+export function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== '') {
     const cookies = document.cookie.split(';');
@@ -14,8 +14,9 @@ function getCookie(name) {
   }
   return cookieValue;
 }
+
 // Получаем CSRF-токен
-const csrftoken = getCookie('csrftoken');
+const csrfToken = getCookie('csrftoken');
 
 export const handleLogin = async (username, password, login, navigate, setError, setLoginAttempts) => {
   try {
@@ -23,7 +24,7 @@ export const handleLogin = async (username, password, login, navigate, setError,
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRFToken': csrftoken,
+        'X-CSRFToken': csrfToken,
       },
       body: JSON.stringify({ username, password }),
     });
@@ -62,7 +63,7 @@ export const handleRegistration = async (password, confirmPassword, username, em
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-CSRFToken': csrftoken,
+        'X-CSRFToken': csrfToken,
       },
       body: JSON.stringify({ username, email, password }),
     });
@@ -92,21 +93,20 @@ export const handleRegistration = async (password, confirmPassword, username, em
   }
 };
 
-export const handleResetPassword = async (e, email, setError, setModalMessage, setIsModalOpen, setMode) => {
-  e.preventDefault();
-
+export const handleResetPassword = async (email, setError, setModalMessage, setIsModalOpen, setMode) => {
   try {
     const response = await fetch('/api/reset-password/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken,
       },
       body: JSON.stringify({ email }),
     });
 
     if (response.ok) {
       setModalMessage('Проверьте ваш email для инструкций по сбросу пароля.');
-      setIsModalOpen(true); // Открываем модальное окно
+      setIsModalOpen(true);
       setMode('login');
     } else {
       setError('Ошибка при сбросе пароля');

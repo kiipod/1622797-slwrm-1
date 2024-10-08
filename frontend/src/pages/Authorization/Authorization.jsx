@@ -35,24 +35,6 @@ const Authorization = ({ initialMode = 'login', setAuthMode }) => {
     }
   }, [mode, setAuthMode]);
 
-  useEffect(() => {
-    // Загрузка сохраненных данных при монтировании компонента
-    const savedData = JSON.parse(localStorage.getItem('registrationData'));
-    if (savedData) {
-      setUsername(savedData.username || '');
-      setEmail(savedData.email || '');
-      setPassword(savedData.password || '');
-      setConfirmPassword(savedData.confirmPassword || '');
-      setIsCheckboxChecked(savedData.isCheckboxChecked || false);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Сохранение данных при изменении полей формы
-    const dataToSave = { username, email, password, confirmPassword, isCheckboxChecked };
-    localStorage.setItem('registrationData', JSON.stringify(dataToSave));
-  }, [username, email, password, confirmPassword, isCheckboxChecked]);
-
   const validateUsername = (username) => {
     if (username.includes(' ')) {
       setModalMessage('Имя пользователя не должно содержать пробелов');
@@ -93,8 +75,6 @@ const Authorization = ({ initialMode = 'login', setAuthMode }) => {
                 login,
                 navigate
             );
-            // Очистка localStorage после успешной регистрации
-            localStorage.removeItem('registrationData');
           } else {
             setModalMessage('Пожалуйста, дайте согласие на обработку персональных данных');
             setIsModalOpen(true);
@@ -112,39 +92,24 @@ const Authorization = ({ initialMode = 'login', setAuthMode }) => {
 
   const handleResetPasswordClick = async () => {
     try {
-      console.log('Начинаем запрос на сброс пароля...');
-
-      const response = await fetch('/api/reset-password/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: resetEmail }),
-      });
-
-      console.log('Ответ от сервера получен:', response);
-
-      if (response.ok) {
-        console.log('Запрос завершен успешно, письмо отправлено.');
-        setModalMessage('На ваш email отправлено письмо с инструкциями по сбросу пароля.');
-      } else {
-        console.log('Ответ от сервера не ок, пробуем распарсить как JSON...');
-
-        const text = await response.text();
-        console.log('Текст ответа от сервера:', text);
-
-        try {
-          const errorData = JSON.parse(text);
-          console.log('Распарсенные данные ошибки:', errorData);
-          setModalMessage(errorData.message || 'Произошла ошибка при отправке письма для сброса пароля.');
-        } catch (parseError) {
-          console.error('Ошибка парсинга JSON:', parseError);
-          setModalMessage('Ошибка: ' + text);
-        }
-      }
+      await handleResetPassword(
+          resetEmail,
+          (errorMessage) => {
+            if (errorMessage) {
+              setError(errorMessage);
+            }
+          },
+          (modalMessage) => {
+            setModalMessage(modalMessage);
+            setIsModalOpen(true);
+          },
+          setIsModalOpen,
+          setMode
+      );
     } catch (error) {
-      console.error('Ошибка при запросе сброса пароля:', error);
+      console.error('Ошибка при обработке сброса пароля:', error);
       setModalMessage('Произошла ошибка при отправке запроса на сброс пароля.');
+      setIsModalOpen(true);
     }
   };
 
