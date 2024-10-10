@@ -16,9 +16,11 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/backend/wheels -r requir
 FROM python:3.10-slim
 
 # Установка необходимых пакетов в систему Linux
-RUN apt-get update && apt-get install -y --no-install-recommends netcat-openbsd && \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    netcat-openbsd \
+    libpq-dev && \
     apt-get autoremove -y && \
-    apt-get install -y iproute2 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
