@@ -100,14 +100,19 @@
 			}
 		}
 
-		.addToCartButton {
+		.addToCartButton,
+		.backToShopButton {
 			@include button-style;
-			margin: 0;
+			margin: 15px 0;
 			font-size: 1.5rem;
 			width: 270px;
 
 			&:hover {
 				background-color: var(--color-blue);
+			}
+
+			@include tablet {
+				width: 100%;
 			}
 
 			@include mobile {

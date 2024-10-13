@@ -16,9 +16,11 @@ RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/backend/wheels -r requir
 FROM python:3.10-slim
 
 # Установка необходимых пакетов в систему Linux
-RUN apt-get update && apt-get install -y --no-install-recommends netcat-openbsd && \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    netcat-openbsd \
+    libpq-dev && \
     apt-get autoremove -y && \
-    apt-get install -y iproute2 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -35,7 +37,7 @@ WORKDIR /app/backend
 COPY ./backend .
 COPY ./backend/.env.prod.example .env
 
-#Копируем entrypoint в образ для запуска
+# Копируем entrypoint в образ для запуска
 COPY ./docker/Django/entrypoint.sh /app/backend/entrypoint.sh
 
 # Даем права и запускаем entrypoint внутри контейнера

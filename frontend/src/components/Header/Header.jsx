@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
 import UserBlock from './UserBlock/UserBlock';
-import CartButton from '../../pages/ShopPage/CartButton/CartButton';
+// import CartButton from '../../pages/ShopPage/CartButton/CartButton';
 import { useAuth } from '../../context/AuthContext';
 import styles from './Header.module.scss';
 import useWindowSize from '../../hooks/useWindowSize';
@@ -15,7 +15,6 @@ import Whatsapp from '../../assets/icons/whatsapp_icon.png';
 import Telephone from '../../assets/icons/telephone_icon.png';
 import Email from '../../assets/icons/email_icon.png';
 import VK from '../../assets/icons/vk_icon.png';
-import VIPChatCard from "../../pages/MarenGarden/VIPModalChat/VIPChatCard/VIPChatCard";
 
 const Header = () => {
   const { isLoggedIn, user } = useAuth();
@@ -36,7 +35,7 @@ const Header = () => {
     <header className={isMenuVisible && isMobile ? styles.menuVisible : ''}>
       <div className={styles.headerContent}>
         <img className={styles.headerLogo} src={isMenuVisible && isMobile ? logo_white : logo_black} alt="Logo ДушуГрею" />
-        <CartButton />
+        {/*<CartButton />*/}
         {!isMobile && <Navbar />}
         <div className={`${styles.rightSection} ${isMobile ? styles.hideOnMobile : ''}`}>
           {isLoggedIn && user ? (

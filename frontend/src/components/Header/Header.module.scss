@@ -39,7 +39,8 @@ header {
 	}
 
 	@include tablet {
-		padding: 0 10px;
+		padding: 0 12px;
+		height: 73px;
 	}
 
 	@include mobile {
@@ -53,8 +54,12 @@ header {
 	margin-right: 0;
 
 	@include tablet {
-		width: 90px;
+		width: 70px;
 		z-index: 2001;
+	}
+
+	@include mobile {
+		width: 70px;
 	}
 }
 
@@ -133,6 +138,12 @@ header {
 
 .loginButton {
 	@include button-header;
+
+	@include tablet {
+		font-size: 13px;
+		width: 65px;
+		height: 24px;
+	}
 }
 
 .rightSection {

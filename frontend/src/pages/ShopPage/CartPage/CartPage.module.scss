@@ -10,6 +10,18 @@
 	padding: 110px 70px 20px 70px;
 	margin: 0 auto;
 
+	@include desktop {
+		padding: 110px 20px 20px 20px;
+	}
+
+	@include tablet {
+		padding: 110px 10px 20px 10px;
+	}
+
+	@include mobile {
+		padding: 160px 5px 20px 5px;
+	}
+
 	h1 {
 		margin-bottom: 20px;
 		font-size: 2rem;
@@ -101,22 +113,23 @@
 
 		.agreement {
 			margin-top: 10px;
-			font-size: 0.8rem; /* уменьшить шрифт */
+			font-size: 0.8rem;
 
 			label {
 				display: flex;
-				align-items: center; /* выровнять по центру по вертикали */
-				gap: 5px; /* уменьшить промежуток между чекбоксом и текстом */
+				align-items: center;
+				gap: 5px;
 				cursor: pointer;
 			}
 
 			input[type="checkbox"] {
+				width: 50px;
 				margin-right: 5px;
-				margin-top: 0; /* выравнивание чекбокса */
+				margin-top: 0;
 			}
 
 			span {
-				font-size: 0.9rem;
+				font-size: 1.1rem;
 				line-height: 1.2;
 			}
 		}
@@ -167,6 +180,18 @@
 			height: auto;
 			border-radius: 10px;
 			margin-right: 20px;
+
+			@include tablet {
+				width: 150px;
+			}
+
+			@include mobile {
+				width: 100px;
+			}
+
+			@include mobile-small {
+				width: 80px;
+			}
 
 			img {
 				width: 100%;

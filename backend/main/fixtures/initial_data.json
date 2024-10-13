@@ -1,5 +1,12 @@
 [
   {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "VIP"
+    }
+  },
+  {
     "model": "main.category",
     "pk": 1,
     "fields": {
@@ -29,9 +36,9 @@
   },
   {
     "model": "main.category",
-    "pk": 6,
+    "pk": 5,
     "fields": {
-      "name": "Masterclass"
+      "name": "мастер-классы"
     }
   },
   {
@@ -69,28 +76,6 @@
   },
   {
     "model": "main.ecostaff",
-    "pk": 5,
-    "fields": {
-      "title": "Палантин из кашемира \"Шепот Эльфов\"",
-      "description": "Палантин \"Шепот Эльфов\" - Волшебное Тепло Весеннего Неба.",
-      "content": "Окутайтесь теплом и уютом палантина \"Шепот эльфов\" из коллекции \"Оберег\" в любое время года. Этот восхитительный аксессуар создан из нежнейшего кашемира, чтобы дарить вам непревзойденный комфорт и элегантность.\r\n\r\nПалантин \"Шепот эльфов\" украшен изысканной росписью, выполненной вручную натуральными красителями из трав и корня марены. Его фон удивительного небесно-голубого оттенка напоминает первые весенние лучи солнца, пробивающиеся сквозь облака. Изящный узор, словно выткан эльфийскими мастерами, придает палантину сказочное очарование.\r\n\r\nРазмеры 200х70 см позволяют использовать его как стильный шарф, модную накидку или даже уютный плед, чтобы согреться в прохладные вечера. Аккуратная машинная подшивка обеспечивает долговечность и опрятный вид изделия.\r\n\r\nПалантин \"Шепот эльфов\" станет прекрасным дополнением к вашему гардеробу, привлекая восхищенные взгляды своей неповторимой красотой. Это уникальное произведение искусства ручной работы существует в единственном экземпляре, делая его по-настоящему эксклюзивным.\r\n\r\nВаш заказ будет тщательно упакован, чтобы сохранить всю прелесть и великолепие этого волшебного палантина. Позвольте ему окутать вас теплом, подаренным самой природой, и подарить ощущение весеннего волшебства.",
-      "price": "7000.00",
-      "category": 1
-    }
-  },
-  {
-    "model": "main.ecostaff",
-    "pk": 6,
-    "fields": {
-      "title": "Палантин из кашемира \"Пурпурный\"",
-      "description": "Палантин \"Пурпурный\" - Магия Природных Красок.",
-      "content": "Окутайтесь теплом и уютом палантина \"Пурпурный\" в любое время года. Этот роскошный аксессуар, созданный из невероятно мягкого сочетания кашемира и шерсти мериноса, станет идеальным дополнением к вашему гардеробу.\r\n\r\nПурпурный цвет палантина, ассоциирующийся с тайной магией и силой, получен благодаря использованию натуральных красителей из корня марены и стружки кампешевого дерева. Каждый оттенок этого великолепного изделия - результат настоящей алхимии природы, завораживающего путешествия в историю красителей и открытия их удивительной силы. Ведь поистине волшебно, что в корнях, коре и листьях растений содержится столько красок. Вся эта красота существует на нашей щедрой и прекрасной планете, даря нам возможность создавать поистине уникальные вещи.\r\n\r\nВнушительные размеры палантина 210х70 см позволяют драпировать его самыми разнообразными способами, создавая неповторимый стиль. Он удобен в использовании, приятен к лицу и станет прекрасным подарком для близкого человека к любому празднику.\r\n\r\nПалантин \"Пурпурный\" - это уникальное произведение искусства ручной работы, существующее в единственном экземпляре. Приобретая его, вы становитесь обладателем эксклюзивного аксессуара, который точно не останется незамеченным.\r\n\r\nВаш заказ будет тщательно упакован, чтобы сохранить всю прелесть и великолепие этого магического палантина. Позвольте ему окутать вас теплом и наполнить жизнь красками, подаренными самой щедрой природой.",
-      "price": "6500.00",
-      "category": 1
-    }
-  },
-  {
-    "model": "main.ecostaff",
     "pk": 7,
     "fields": {
       "title": "Палантин из шерсти мериноса и кашемира \"Веси\"",
@@ -98,17 +83,6 @@
       "content": "Окутайтесь невероятным уютом и теплом палантина \"Веси\", изготовленного из роскошного сочетания шерсти мериноса и кашемира. Этот потрясающий аксессуар украшен удивительной росписью, выполненной натуральными красителями - индиго, кошенилью, корнем марены, а также листьями папоротника, клена и травами.\r\nРоссыпь лесных растений на палантине напоминает течение быстрой реки. И неслучайно, ведь большая часть растений для его создания была собрана на берегах реки Сестры, протекающей в живописных местах.\r\n\r\nОдин из главных красителей - индиго - обладает захватывающей историей. Это растение начали выращивать в долине Инда более 5000 лет назад, а на местном наречии оно называлось \"нила\", что означает \"темно-синий\". Культура индиго распространилась по всему миру, и даже в Британском музее хранится табличка с вавилонскими рецептами краски, датируемая VII веком до нашей эры! А когда жадные до денег европейцы достигли Гоа, они с радостью начали вывозить индиго вместе с камфорой, индонезийскими фруктами и расшитым шелком.\r\n\r\nПалантин \"Веси\" станет ярким акцентом в вашем образе и точно не останется незамеченным. Это уникальное произведение искусства ручной работы существует в единственном экземпляре.\r\n\r\nВаш заказ будет аккуратно упакован, чтобы сохранить всю прелесть этого удивительного палантина. Позвольте ему окутать вас природным теплом и наполнить жизнь красками, подаренными щедрой природой.",
       "price": "6500.00",
       "category": 1
-    }
-  },
-  {
-    "model": "main.ecostaff",
-    "pk": 8,
-    "fields": {
-      "title": "Платок из льна \"Шалфей\"",
-      "description": "Платок из льна, окрашенный индиго, золотарником и листьями. Нежный цвет шалфея и графичные отпечатки листьев создают уникальный узор на ткани.",
-      "content": "Осеннее настроение в полном разгаре! Листья становятся золотистыми, а травы приобретают серебристый оттенок. Но несмотря на это, дни все еще теплые и приятные. Наступает время готовиться к холодам и обновлять свой гардероб. \r\n\r\nПредставляю новую коллекцию платков и палантинов, которые подарят вам тепло и комфорт в холодное время года. Один из самых ярких представителей - это огромный платок из льна, окрашенный индиго, золотарником и листьями. Нежный цвет шалфея и графичные отпечатки листьев создают уникальный узор на ткани. \r\n\r\nПлаток имеет размер 130*130 см и подшит на машинке, что обеспечивает долговечность и качество изделия. \r\n\r\nКаждый платок упакован в красивую упаковку, а также прилагается инструкция по уходу за изделием. Сделайте этот платок частью своего осеннего гардероба и наслаждайтесь теплом и комфортом в любую погоду!",
-      "price": "3500.00",
-      "category": 2
     }
   },
   {
@@ -335,10 +309,10 @@
     "model": "main.ecostaff",
     "pk": 29,
     "fields": {
-      "title": "Жакет-кимоно \"Графика\"",
-      "description": "Экопринт. Жакет-кимоно \"Графика\" выполнен из качественного серого льна с диагональным переплетением.",
-      "content": "Жакет-кимоно \"Графика\" идеально сочетается с платьем, брюками или джинсами, придавая вашему образу неповторимый шарм. Изюминкой этой модели является уникальная роспись растениями. Графический рисунок листьев, с прорисовкой всех тонкостей клёна и шиповника, дополнен изящным узором из травинок сиреневого цвета.\r\n\r\nЖакет-кимоно выполнен из качественного серого льна с диагональным переплетением, что придает ему особый шарм и изысканность. Размеры представлены от 46 до 54.\r\n\r\nХарактеристики изделия:\r\nДлина плеча: 15,5 см\r\nДлина рукава: 56 см\r\nДлина по спинке: 83 см\r\nШирина по спинке: 46 см\r\n\r\nКроме того, каждый жакет-кимоно поставляется в индивидуальной упаковке, что делает его отличным выбором для подарка или для сохранения в вашем гардеробе в идеальном состоянии.\r\n\r\nПогрузитесь в мир изысканной элегантности с нашим жакетом-кимоно \"Графика\" и создайте неповторимый образ, который будет выделять вас из толпы.",
-      "price": "8500.00",
+      "title": "Юбка-сарафан \"Мята\"",
+      "description": "Юбка-сарафан из льна мятного цвета",
+      "content": "Погрузитесь в атмосферу природы с уникальной юбкой-сарафаном! Изготовленная из натурального льна, она украшена симметричным рисунком, созданным из папоротников, трав и листочков. В технике экопринт. Растения были пропитаны экстрактом корня марены и след от листьев навсегда оставил орнамент на деталях юбки.\nОсобенности:\nКарманы: Удобные карманы позволят вам хранить необходимые аксессуары под рукой.\nРегулируемые лямки: Широкие лямки можно застёгивать крест-накрест для максимального комфорта.\nУникальность: Эта юбка-сарафан — единственный экземпляр, повторов не будет.\n\nРазмеры:\nПодходит на размер 48-52.\nОбхват талии: 90-100 см (регулируется резинкой).\nДлина юбки от пояса: 91 см.\nШирина юбки по низу: 280 см.\nШирина пояса: 8 см.\nШирина лямок: 6,5 см (длина регулируется пуговицами).\nИндивидуальная упаковка прилагается. \nСоздайте свой неповторимый образ с этой стильной юбкой-сарафаном!",
+      "price": "8000.00",
       "category": 4
     }
   },
@@ -476,96 +450,13 @@
   },
   {
     "model": "main.ecostaff",
-    "pk": 42,
-    "fields": {
-      "title": "Платок из льна \"Шалфей\"",
-      "description": "Платок из льна, окрашенный индиго, золотарником и листьями. Нежный цвет шалфея и графичные отпечатки листьев создают уникальный узор на ткани.",
-      "content": "Осеннее настроение в полном разгаре! Листья становятся золотистыми, а травы приобретают серебристый оттенок. Но несмотря на это, дни все еще теплые и приятные. Наступает время готовиться к холодам и обновлять свой гардероб. \r\n\r\nПредставляю новую коллекцию платков и палантинов, которые подарят вам тепло и комфорт в холодное время года. Один из самых ярких представителей - это огромный платок из льна, окрашенный индиго, золотарником и листьями. Нежный цвет шалфея и графичные отпечатки листьев создают уникальный узор на ткани. \r\n\r\nПлаток имеет размер 130*130 см и подшит на машинке, что обеспечивает долговечность и качество изделия. \r\n\r\nКаждый платок упакован в красивую упаковку, а также прилагается инструкция по уходу за изделием. Сделайте этот платок частью своего осеннего гардероба и наслаждайтесь теплом и комфортом в любую погоду!",
-      "price": "3500.00",
-      "category": 2
-    }
-  },
-  {
-    "model": "main.ecostaff",
     "pk": 43,
     "fields": {
       "title": "Мареновый сад",
       "description": "Мастер-класс по окрашиванию ткани.",
       "content": "Я рада представить вам мой мастер-класс \"Цветной фон\" по окрашиванию ткани природными красителями. Этот мастер-класс является уникальным руководством, которое поможет вам научиться создавать красивые и неповторимые цветовые эффекты на ткани с использованием природных красителей, таких как марена, кошениль, индиго, кампеш и другие.",
       "price": "4000.00",
-      "category": 6
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 1,
-    "fields": {
-      "image": "shop/8_Platok_iz_lna_Shalfej_1.jpeg",
-      "ecostaff": 8
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 2,
-    "fields": {
-      "image": "shop/8_Platok_iz_lna_Shalfej_2.jpeg",
-      "ecostaff": 8
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 3,
-    "fields": {
-      "image": "shop/8_Platok_iz_lna_Shalfej_3.jpeg",
-      "ecostaff": 8
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 4,
-    "fields": {
-      "image": "shop/8_Platok_iz_lna_Shalfej_4.jpeg",
-      "ecostaff": 8
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 5,
-    "fields": {
-      "image": "shop/8_Platok_iz_lna_Shalfej_5.jpeg",
-      "ecostaff": 8
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 6,
-    "fields": {
-      "image": "shop/8_Platok_iz_lna_Shalfej_6.jpeg",
-      "ecostaff": 8
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 7,
-    "fields": {
-      "image": "shop/8_Platok_iz_lna_Shalfej_7.jpeg",
-      "ecostaff": 8
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 8,
-    "fields": {
-      "image": "shop/8_Platok_iz_lna_Shalfej_8.jpeg",
-      "ecostaff": 8
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 9,
-    "fields": {
-      "image": "shop/8_Platok_iz_lna_Shalfej_9.jpeg",
-      "ecostaff": 8
+      "category": 5
     }
   },
   {
@@ -646,174 +537,6 @@
     "fields": {
       "image": "shop/7_Palantin_iz_shersti_merinosa_i_kashemira_Vesi_19.jpeg",
       "ecostaff": 7
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 20,
-    "fields": {
-      "image": "shop/6_Palantin_iz_kashemira_Purpurnyj_20.jpeg",
-      "ecostaff": 6
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 21,
-    "fields": {
-      "image": "shop/6_Palantin_iz_kashemira_Purpurnyj_21.jpeg",
-      "ecostaff": 6
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 22,
-    "fields": {
-      "image": "shop/6_Palantin_iz_kashemira_Purpurnyj_22.jpeg",
-      "ecostaff": 6
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 23,
-    "fields": {
-      "image": "shop/6_Palantin_iz_kashemira_Purpurnyj_23.jpeg",
-      "ecostaff": 6
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 24,
-    "fields": {
-      "image": "shop/6_Palantin_iz_kashemira_Purpurnyj_24.jpeg",
-      "ecostaff": 6
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 25,
-    "fields": {
-      "image": "shop/6_Palantin_iz_kashemira_Purpurnyj_25.jpeg",
-      "ecostaff": 6
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 26,
-    "fields": {
-      "image": "shop/6_Palantin_iz_kashemira_Purpurnyj_26.jpeg",
-      "ecostaff": 6
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 27,
-    "fields": {
-      "image": "shop/6_Palantin_iz_kashemira_Purpurnyj_27.jpeg",
-      "ecostaff": 6
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 28,
-    "fields": {
-      "image": "shop/6_Palantin_iz_kashemira_Purpurnyj_28.jpeg",
-      "ecostaff": 6
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 29,
-    "fields": {
-      "image": "shop/6_Palantin_iz_kashemira_Purpurnyj_29.jpeg",
-      "ecostaff": 6
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 30,
-    "fields": {
-      "image": "shop/5_Palantin_iz_kashemira_Shepot_Elfov_30.jpeg",
-      "ecostaff": 5
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 31,
-    "fields": {
-      "image": "shop/5_Palantin_iz_kashemira_Shepot_Elfov_31.jpeg",
-      "ecostaff": 5
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 32,
-    "fields": {
-      "image": "shop/5_Palantin_iz_kashemira_Shepot_Elfov_32.jpeg",
-      "ecostaff": 5
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 33,
-    "fields": {
-      "image": "shop/5_Palantin_iz_kashemira_Shepot_Elfov_33.jpeg",
-      "ecostaff": 5
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 34,
-    "fields": {
-      "image": "shop/5_Palantin_iz_kashemira_Shepot_Elfov_34.jpeg",
-      "ecostaff": 5
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 35,
-    "fields": {
-      "image": "shop/5_Palantin_iz_kashemira_Shepot_Elfov_35.jpeg",
-      "ecostaff": 5
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 36,
-    "fields": {
-      "image": "shop/5_Palantin_iz_kashemira_Shepot_Elfov_36.jpeg",
-      "ecostaff": 5
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 37,
-    "fields": {
-      "image": "shop/5_Palantin_iz_kashemira_Shepot_Elfov_37.jpeg",
-      "ecostaff": 5
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 38,
-    "fields": {
-      "image": "shop/5_Palantin_iz_kashemira_Shepot_Elfov_38.jpeg",
-      "ecostaff": 5
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 39,
-    "fields": {
-      "image": "shop/5_Palantin_iz_kashemira_Shepot_Elfov_39.jpeg",
-      "ecostaff": 5
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 40,
-    "fields": {
-      "image": "shop/5_Palantin_iz_kashemira_Shepot_Elfov_40.jpeg",
-      "ecostaff": 5
     }
   },
   {
@@ -2044,7 +1767,7 @@
     "model": "main.ecostaffimage",
     "pk": 204,
     "fields": {
-      "image": "shop/29_Zhaket-kimono_Grafika_None.jpg",
+      "image": "shop/44_Jubka-sarafan_Mjata_None_7rXIdfz.jpeg",
       "ecostaff": 29
     }
   },
@@ -2052,7 +1775,7 @@
     "model": "main.ecostaffimage",
     "pk": 205,
     "fields": {
-      "image": "shop/29_Zhaket-kimono_Grafika_None_QCBHlBf.jpg",
+      "image": "shop/44_Jubka-sarafan_Mjata_None_a17gqIr.jpeg",
       "ecostaff": 29
     }
   },
@@ -2060,7 +1783,7 @@
     "model": "main.ecostaffimage",
     "pk": 206,
     "fields": {
-      "image": "shop/29_Zhaket-kimono_Grafika_None_gTOtuUx.jpg",
+      "image": "shop/44_Jubka-sarafan_Mjata_None_KXHMqTI.jpeg",
       "ecostaff": 29
     }
   },
@@ -2068,7 +1791,7 @@
     "model": "main.ecostaffimage",
     "pk": 207,
     "fields": {
-      "image": "shop/29_Zhaket-kimono_Grafika_None_fMtEhXn.jpg",
+      "image": "shop/44_Jubka-sarafan_Mjata_None_o5lxnYg.jpeg",
       "ecostaff": 29
     }
   },
@@ -2076,7 +1799,7 @@
     "model": "main.ecostaffimage",
     "pk": 208,
     "fields": {
-      "image": "shop/29_Zhaket-kimono_Grafika_None_kaFGRNZ.jpg",
+      "image": "shop/44_Jubka-sarafan_Mjata_None_SGLgeue.jpeg",
       "ecostaff": 29
     }
   },
@@ -2084,31 +1807,7 @@
     "model": "main.ecostaffimage",
     "pk": 209,
     "fields": {
-      "image": "shop/29_Zhaket-kimono_Grafika_None_5eN8v8A.jpg",
-      "ecostaff": 29
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 210,
-    "fields": {
-      "image": "shop/29_Zhaket-kimono_Grafika_None_3yqrNGD.jpg",
-      "ecostaff": 29
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 211,
-    "fields": {
-      "image": "shop/29_Zhaket-kimono_Grafika_None_9kcIrM4.jpg",
-      "ecostaff": 29
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 212,
-    "fields": {
-      "image": "shop/29_Zhaket-kimono_Grafika_None_w8G4RBx.jpg",
+      "image": "shop/44_Jubka-sarafan_Mjata_None.jpeg",
       "ecostaff": 29
     }
   },
@@ -2738,74 +2437,10 @@
   },
   {
     "model": "main.ecostaffimage",
-    "pk": 291,
+    "pk": 300,
     "fields": {
-      "image": "shop/42_Platok_iz_lna_Shalfej_None.jpg",
-      "ecostaff": 42
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 292,
-    "fields": {
-      "image": "shop/42_Platok_iz_lna_Shalfej_None_thRla5G.jpg",
-      "ecostaff": 42
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 293,
-    "fields": {
-      "image": "shop/42_Platok_iz_lna_Shalfej_None_2vwHZEq.jpg",
-      "ecostaff": 42
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 294,
-    "fields": {
-      "image": "shop/42_Platok_iz_lna_Shalfej_None_pdu9jsN.jpg",
-      "ecostaff": 42
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 295,
-    "fields": {
-      "image": "shop/42_Platok_iz_lna_Shalfej_None_GaFnLTP.jpg",
-      "ecostaff": 42
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 296,
-    "fields": {
-      "image": "shop/42_Platok_iz_lna_Shalfej_None_Rn3LRbt.jpg",
-      "ecostaff": 42
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 297,
-    "fields": {
-      "image": "shop/42_Platok_iz_lna_Shalfej_None_vvbvgcl.jpg",
-      "ecostaff": 42
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 298,
-    "fields": {
-      "image": "shop/42_Platok_iz_lna_Shalfej_None_ghOQxxS.jpg",
-      "ecostaff": 42
-    }
-  },
-  {
-    "model": "main.ecostaffimage",
-    "pk": 299,
-    "fields": {
-      "image": "shop/42_Platok_iz_lna_Shalfej_None_whdrDf2.jpg",
-      "ecostaff": 42
+      "image": "shop/43_Marenovyj_sad_None.jpg",
+      "ecostaff": 43
     }
   }
 ]

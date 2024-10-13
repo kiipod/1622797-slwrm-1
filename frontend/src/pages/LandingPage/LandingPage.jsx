@@ -1,16 +1,17 @@
 // LandingPage.jsx
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
 import styles from './LandingPage.module.scss';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Slider from "../../components/Slider/Slider";
 import Leaf01 from "../../assets/leaf_1.png";
 import Leaf02 from "../../assets/leaf_2.png";
 import images from "./ImageList";
-import { AuthContext } from '../../context/AuthContext';
+import {AuthContext} from '../../context/AuthContext';
 
 const LandingPage = () => {
-  const { user } = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   const isVIP = user && user.groups && user.groups.includes('VIP');
+  const isRegistered = Boolean(user);
 
   return (
     <div className={styles.landingPage}>
@@ -107,8 +108,12 @@ const LandingPage = () => {
         </p>
         <p>
           Предлагаю вам самим попробовать этот уникальный творческий эксперимент рука об руку с природой. Давайте вместе
-          волшебничать, если вам кажется, что это сложно и не для вас, то я предлагаю стать смелее. Посмотрите мои <Link to="/lessons" className={styles.landingPage__link}>бесплатные уроки</Link>, и если решитесь – приобретайте мой мастер-класс, в котором я подробно рассказываю все
-          тонкости процесса.
+          волшебничать, если вам кажется, что это сложно и не для вас, то я предлагаю стать смелее.
+        </p>
+
+        <p>
+          Посмотрите мои{' '}<Link to="/lessons" className={styles.landingPage__link}> бесплатные уроки,</Link> и если
+          решитесь – приобретайте мой мастер-класс, в котором я подробно рассказываю все тонкости процесса.
         </p>
       </div>
 
@@ -117,15 +122,36 @@ const LandingPage = () => {
           <h1>Покупайте мастер-класс!</h1>
           <br/>
           <br/>
-          <p>
-            Если Вы хотите приобрести мастер-класс "Цветной фон",
-            состоящий из девяти видео и подробных конспектов, <Link to="/auth" className={styles.landingPage__link}>зарегистрируйтесь.</Link> Добавьте его в корзину и после оплаты вы сможете получить полный доступ к в личном кабинете.
-          </p>
-          <Link to="/promo" className={styles.landingPage__button}>
-            Подробнее
-          </Link>
-          <p>Цена 4000 рублей.</p>
-          <p>Волшебничайте! И Ваша жизнь станет волшебством.</p>
+          {isRegistered ? (
+            <>
+              <p>
+                Добавьте мастер-класс "Цветной фон" в корзину и после оплаты
+                вы сможете получить полный доступ к видеоурокам и конспектам в личном кабинете.
+              </p>
+              <Link to="/promo" className={styles.landingPage__button}>
+                Подробнее
+              </Link>
+              <p>Цена 4000 рублей.</p>
+              <p>Волшебничайте! И Ваша жизнь станет волшебством.</p>
+            </>
+          ) : (
+            <>
+              <p>
+                Если Вы хотите приобрести мастер-класс "Цветной фон", состоящий из девяти видео и подробных
+                конспектов{' '}
+                <Link to="/auth" className={styles.landingPage__link}>зарегистрируйтесь</Link>.
+              </p>
+              <p>
+                Добавьте его в корзину и после оплаты вы сможете получить полный доступ к видеоурокам и конспектам в
+                своём личном кабинете.
+              </p>
+              <Link to="/promo" className={styles.landingPage__button}>
+                Подробнее
+              </Link>
+              <p>Цена 4000 рублей.</p>
+              <p>Волшебничайте! И Ваша жизнь станет волшебством.</p>
+            </>
+          )}
           <br/>
         </div>
       )}
