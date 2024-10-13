@@ -11,6 +11,17 @@
 	box-sizing: border-box; /* Учитываем padding и border в ширине элемента */
 }
 
+.landingPage__link {
+	display: inline; /* Убираем inline-block, чтобы ссылка не нарушала общий поток текста */
+	line-height: inherit; /* Наследуем единое значение line-height */
+	color: var(--color-dark-blue);
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 .titleBlock{
 	display: flex;
 	justify-content: flex-start;
@@ -47,7 +58,7 @@
 	}
 
 	@include mobile {
-		margin: 20px 20px 10px 10px;
+		margin: 10px 0 0 0;
 		font-size: 50px;
 	}
 
@@ -61,17 +72,15 @@
 	font-size: 20px;
 
 	@include desktop {
-		margin: 110px 10px 10px -10px;
+		margin: 90px 0 0 0;
 		font-size: 20px;
 	}
 
 	@include tablet {
-		margin: 110px 10px 10px -10px;
 		font-size: 16px;
 	}
 
 	@include mobile {
-		margin: 110px 10px 10px 0;
 		font-size: 14px;
 	}
 
@@ -191,6 +200,7 @@
 	margin-top: 10px;
 	color: var(--color-dark-blue);
 	text-decoration: none;
+	line-height: inherit;
 
 	&:hover {
 		text-decoration: underline;

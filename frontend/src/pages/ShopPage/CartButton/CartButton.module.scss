@@ -3,15 +3,15 @@
 @import '../../../styles/mixins';
 
 .cartButton {
-	display: flex; // Устанавливаем display: flex, чтобы кнопка была видна в Header
+	display: flex;
 	align-items: center;
-	margin-left: 10px; // Оставляем отступы для кнопки
+	margin-left: 10px;
 	margin-right: 10px;
 	cursor: pointer;
-	position: relative; // Устанавливаем относительное позиционирование
+	position: relative;
 
 	img {
-		width: 30px; // Размеры изображения кнопки
+		width: 30px;
 		height: 30px;
 
 		@include tablet {
@@ -31,7 +31,7 @@
 	}
 
 	.cartCount {
-		position: absolute; // Устанавливаем абсолютное позиционирование для счетчика
+		position: absolute;
 		top: -5px;
 		right: -5px;
 		background: var(--color-red);

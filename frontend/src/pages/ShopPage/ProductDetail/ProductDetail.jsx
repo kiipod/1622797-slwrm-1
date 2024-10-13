@@ -48,6 +48,10 @@ const ProductDetail = () => {
     ));
   };
 
+  const handleGoBack = () => {
+    navigate('/shop');
+  };
+
   if (!product) return <div>Загрузка...</div>;
 
   return (
@@ -68,6 +72,9 @@ const ProductDetail = () => {
           </div>
           <button className={styles.addToCartButton} onClick={handleAddToCart}>
             {isLoggedIn ? 'Добавить в корзину' : 'Войти для покупки'}
+          </button>
+          <button onClick={handleGoBack} className={styles.backToShopButton}>
+            Назад в магазин
           </button>
         </div>
       </div>

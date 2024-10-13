@@ -262,7 +262,8 @@ const marenGardenChapters = [
           to="/conspects"
           style={{
             display: 'inline-block',
-            marginTop: '10px',
+            margin: '10px',
+            width: '100%',
             padding: '10px 20px',
             backgroundColor: 'var(--color-blue)',
             color: 'var(--color-white)',

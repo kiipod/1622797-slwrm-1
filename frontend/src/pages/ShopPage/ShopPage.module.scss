@@ -187,7 +187,7 @@
 	}
 
 	@include mobile {
-		width: 100%; // Кнопка на всю ширину карточки на мобильных
+		width: 100%;
 	}
 }
 
@@ -199,7 +199,7 @@
 		position: fixed;
 		z-index: 2001;
 		top: 19px;
-		left: 110px;
+		left: 10px;
 	}
 
 	.burgerButton {
@@ -210,7 +210,7 @@
 		color: var(--color-main);
 		border-radius: 5px;
 		padding: 10px;
-		margin: 10px 0;
+		margin: 70px 0;
 		text-align: center;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	}

@@ -9,6 +9,22 @@
 	margin: 0 auto;
 	text-align: left;
 
+	@include desktop {
+		padding: 110px 20px 0 20px;
+	}
+
+	@include tablet {
+		padding: 110px 10px 0 10px;
+	}
+
+	@include mobile {
+		padding: 160px 5px 0 5px;
+	}
+
+	@include mobile-small {
+		padding: 160px 5px 0 5px;
+	}
+
 	h1 {
 		margin-bottom: 2rem;
 		text-align: center; /* Центрирование заголовка */
