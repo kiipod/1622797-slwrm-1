@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from '../../../components/ChatButton/ModalChat/ModalChat.module.scss';
 
 const ModalVIPChat = ({ onClose }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  const lastMessageId = useRef(0); // Отслеживание последнего сообщения
+  const [isPolling, setIsPolling] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      const fetchMessages = async () => {
+      const fetchInitialMessages = async () => {
         const response = await fetch('/api/vip-messages/', {
           headers: {
             'Authorization': `Token ${token}`
@@ -17,16 +19,49 @@ const ModalVIPChat = ({ onClose }) => {
         if (response.ok) {
           const data = await response.json();
           setMessages(data);
+          if (data.length > 0) {
+            lastMessageId.current = data[data.length - 1].id;
+          }
         } else {
           console.error('Failed to fetch messages');
         }
       };
-      fetchMessages();
 
-      const intervalId = setInterval(fetchMessages, 5000);
-      return () => clearInterval(intervalId);
+      fetchInitialMessages();
+      longPolling();
     }
+
+    return () => {
+      setIsPolling(false); // Остановить long polling при размонтировании компонента
+    };
   }, []);
+
+  const longPolling = async () => {
+    const token = localStorage.getItem('token');
+    while (isPolling) {
+      try {
+        const response = await fetch(`/api/vip-messages/long-polling/?last_message_id=${lastMessageId.current}`, {
+          headers: {
+            'Authorization': `Token ${token}`
+          }
+        });
+        if (response.ok) {
+          const newMessages = await response.json();
+          if (newMessages.length > 0) {
+            setMessages(prevMessages => [...prevMessages, ...newMessages]);
+            lastMessageId.current = newMessages[newMessages.length - 1].id;
+          }
+        } else {
+          console.error('Error in long polling response:', response.status, response.statusText);
+        }
+      } catch (error) {
+        console.error('Error during long polling:', error);
+      }
+
+      // Делаем паузу перед следующей итерацией
+      await new Promise(resolve => setTimeout(resolve, 40000));
+    }
+  };
 
   const addMessage = (message) => {
     setMessages(prevMessages => [...prevMessages, message]);

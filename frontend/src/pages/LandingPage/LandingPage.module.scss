@@ -11,6 +11,11 @@
 	box-sizing: border-box; /* Учитываем padding и border в ширине элемента */
 }
 
+.fullWidthSlider {
+	width: 100%;
+}
+
+
 .landingPage__link {
 	display: inline; /* Убираем inline-block, чтобы ссылка не нарушала общий поток текста */
 	line-height: inherit; /* Наследуем единое значение line-height */
