@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom'; // Используем useNavigate из React Router
+import { useNavigate } from 'react-router-dom';
 import styles from './ModalChat.module.scss';
 import Modal from '../../Modal/Modal';
 
@@ -10,9 +10,9 @@ const ModalChat = ({ onClose }) => {
   const lastMessageId = useRef(0);
   const textareaRef = useRef(null);
   const messagesEndRef = useRef(null);
-  const [isPolling, setIsPolling] = useState(true);
+  const [isPolling, setIsPolling] = useState(false); // Устанавливаем изначально в false
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate(); // Используем useNavigate для навигации
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -39,9 +39,26 @@ const ModalChat = ({ onClose }) => {
         }
       };
       fetchMessages();
-      longPolling();
     }
   }, [isAuthenticated]);
+
+  useEffect(() => {
+    const handleWindowFocus = () => {
+      setIsPolling(true); // Начать опрос при фокусировке окна
+    };
+
+    const handleWindowBlur = () => {
+      setIsPolling(false); // Остановить опрос при потере фокуса
+    };
+
+    window.addEventListener('focus', handleWindowFocus);
+    window.addEventListener('blur', handleWindowBlur);
+
+    return () => {
+      window.removeEventListener('focus', handleWindowFocus);
+      window.removeEventListener('blur', handleWindowBlur);
+    };
+  }, []);
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -82,8 +99,8 @@ const ModalChat = ({ onClose }) => {
         }
       }
 
-      console.log('Waiting for 20 seconds before next poll...');
-      await new Promise(resolve => setTimeout(resolve, 20000));
+      console.log('Waiting for 40 seconds before next poll...');
+      await new Promise(resolve => setTimeout(resolve, 40000));
     }
   };
 
@@ -126,8 +143,8 @@ const ModalChat = ({ onClose }) => {
 
   const handleRegisterRedirect = () => {
     setShowModal(false);
-    onClose(); // Закрываем окно
-    navigate('/auth'); // Перенаправляем пользователя на страницу регистрации
+    onClose();
+    navigate('/auth');
   };
 
   return (

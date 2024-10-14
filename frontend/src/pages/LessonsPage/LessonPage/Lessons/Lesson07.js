@@ -41,7 +41,7 @@ const Lesson07 = () => {
           разнообразие фону и цвету используемых листьев.</p>
 
         <div className={styles.sliderContainer}>
-          <Slider autoPlay={true} autoPlayTime={4000} width="650px" height="100%" images={[
+          <Slider autoPlay={true} autoPlayTime={4000} width="450px" height="100%" images={[
             {src: '/images/lessons/lesson7_01.jpeg', alt: 'Image 1'},
             {src: '/images/lessons/lesson7_02.jpeg', alt: 'Image 2'},
             {src: '/images/lessons/lesson7_03.jpeg', alt: 'Image 3'},

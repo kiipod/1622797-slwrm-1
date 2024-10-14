@@ -34,7 +34,7 @@ const Lesson05 = () => {
           солей металлов можно достичь разных результатов и создать уникальные цветовые решения.</p>
 
         <div className={styles.sliderContainer}>
-          <Slider autoPlay={true} autoPlayTime={4000} width="750px" height="100%" images={[
+          <Slider autoPlay={true} autoPlayTime={4000} width="450px" height="100%" images={[
             {src: '/images/lessons/lesson5_01.png', alt: 'Image 1'},
             {src: '/images/lessons/lesson5_02.jpg', alt: 'Image 2'},
             {src: '/images/lessons/lesson5_03.jpg', alt: 'Image 3'},

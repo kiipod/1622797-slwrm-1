@@ -27,7 +27,7 @@ const Lesson04 = () => {
           чистым способом создания красивых и стильных вещей.</p>
 
         <div className={styles.sliderContainer}>
-          <Slider autoPlay={true} autoPlayTime={4000} width="650px" height="100%" images={[
+          <Slider autoPlay={true} autoPlayTime={4000} width="450px" height="100%" images={[
             {src: '/images/lessons/lesson4_01.jpeg', alt: 'Image 1'},
             {src: '/images/lessons/lesson4_02.jpeg', alt: 'Image 2'},
             {src: '/images/lessons/lesson4_03.jpeg', alt: 'Image 3'},

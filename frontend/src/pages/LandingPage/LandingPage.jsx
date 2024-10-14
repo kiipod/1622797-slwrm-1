@@ -2,11 +2,11 @@
 import React, {useContext} from 'react';
 import styles from './LandingPage.module.scss';
 import {Link} from "react-router-dom";
-import Slider from "../../components/Slider/Slider";
 import Leaf01 from "../../assets/leaf_1.png";
 import Leaf02 from "../../assets/leaf_2.png";
 import images from "./ImageList";
 import {AuthContext} from '../../context/AuthContext';
+import LandingPageSlider from "../../components/LandingPageSlider/LandingPageSlider";
 
 const LandingPage = () => {
   const {user} = useContext(AuthContext);
@@ -36,7 +36,7 @@ const LandingPage = () => {
         </p>
       </div>
 
-      <Slider autoPlay={true} autoPlayTime={4000} images={images}/>
+      <LandingPageSlider autoPlay={true} autoPlayTime={4000} images={images}/>
 
       <div className={styles.landingPage__process}>
         <h1>Процесс</h1>

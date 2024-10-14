@@ -5,7 +5,7 @@
 .slider {
 	position: relative;
 	overflow: hidden;
-	width: 100%; /* Используем 100% ширины контейнера */
-	height: 100%; /* Базовая высота для десктопов */
-
+	height: 100%;
+	max-width: 600px;
 }
+
