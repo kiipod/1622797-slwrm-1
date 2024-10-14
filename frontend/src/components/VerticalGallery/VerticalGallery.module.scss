@@ -6,10 +6,13 @@
 	flex-direction: column;
 	overflow-y: auto;
 	max-height: 100vh;
+	height: 100vh; // Added this line
 	gap: 10px;
 	padding: 10px;
 	scrollbar-width: thin;
 	scrollbar-color: var(--color-red) var(--color-main);
+	position: sticky; // Added this line
+	top: 0; // Added this line
 
 	&::-webkit-scrollbar {
 		width: 8px;

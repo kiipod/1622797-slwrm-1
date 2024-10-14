@@ -38,7 +38,7 @@ const Lesson06 = () => {
           делитесь своими результатами!</p>
 
         <div className={styles.sliderContainer}>
-          <Slider autoPlay={true} autoPlayTime={5000} width="650px" height="100%" images={[
+          <Slider autoPlay={true} autoPlayTime={5000} width="450px" height="100%" images={[
             {src: '/images/lessons/lesson6_01.jpeg', alt: 'Image 1'},
             {src: '/images/lessons/lesson6_02.jpeg', alt: 'Image 2'},
             {src: '/images/lessons/lesson6_03.jpeg', alt: 'Image 3'}

@@ -4,6 +4,7 @@ import styles from './ProductDetail.module.scss';
 import VerticalGallery from '../../../components/VerticalGallery/VerticalGallery';
 import { CartContext } from '../../../context/CartContext';
 import { AuthContext } from "../../../context/AuthContext";
+import LightboxModal from '../../../pages/GalleryPage/LightboxModal/LightboxModal';
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -13,6 +14,8 @@ const ProductDetail = () => {
   const { isLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -52,6 +55,16 @@ const ProductDetail = () => {
     navigate('/shop');
   };
 
+  const openLightbox = (index) => {
+    setSelectedImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    setSelectedImageIndex(null);
+  };
+
   if (!product) return <div>Загрузка...</div>;
 
   return (
@@ -60,7 +73,10 @@ const ProductDetail = () => {
       <div className={styles.productContent}>
         <div className={styles.productImages}>
           {product.images && product.images.length > 0 && (
-            <VerticalGallery images={product.images} />
+            <VerticalGallery
+              images={product.images}
+              onImageClick={openLightbox}
+            />
           )}
         </div>
 
@@ -78,6 +94,15 @@ const ProductDetail = () => {
           </button>
         </div>
       </div>
+
+      {/* Lightbox for viewing images */}
+      {lightboxOpen && (
+        <LightboxModal
+          images={product.images}
+          selectedImageIndex={selectedImageIndex}
+          closeLightbox={closeLightbox}
+        />
+      )}
     </div>
   );
 };
