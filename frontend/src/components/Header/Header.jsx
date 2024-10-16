@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
 import UserBlock from './UserBlock/UserBlock';
-// import CartButton from '../../pages/ShopPage/CartButton/CartButton';
 import { useAuth } from '../../context/AuthContext';
 import styles from './Header.module.scss';
 import useWindowSize from '../../hooks/useWindowSize';
@@ -34,12 +33,11 @@ const Header = () => {
   return (
     <header className={isMenuVisible && isMobile ? styles.menuVisible : ''}>
       <div className={styles.headerContent}>
-        <img className={styles.headerLogo} src={isMenuVisible && isMobile ? logo_white : logo_black} alt="Logo ДушуГрею" />
-        {/*<CartButton />*/}
-        {!isMobile && <Navbar />}
+        <img className={styles.headerLogo} src={logo_black} alt="Logo ДушуГрею"/>
+        {!isMobile && <Navbar/>}
         <div className={`${styles.rightSection} ${isMobile ? styles.hideOnMobile : ''}`}>
           {isLoggedIn && user ? (
-            <UserBlock userName={user.username} userPicture={user.picture} />
+            <UserBlock userName={user.username} userPicture={user.picture}/>
           ) : (
             location.pathname !== '/auth' && (
               <button className={styles.loginButton} onClick={handleLoginClick}>
@@ -51,9 +49,9 @@ const Header = () => {
         {isMobile && (
           <>
             {isMenuVisible ? (
-              <img src={close_icon} alt="Close" onClick={closeMenu} className={styles.headerMenuIcon} />
+              <img src={close_icon} alt="Close" onClick={closeMenu} className={styles.headerMenuIcon}/>
             ) : (
-              <img src={burger_menu_icon} alt="Menu" onClick={openMenu} className={styles.headerMenuIcon} />
+              <img src={burger_menu_icon} alt="Menu" onClick={openMenu} className={styles.headerMenuIcon}/>
             )}
           </>
         )}
@@ -63,11 +61,7 @@ const Header = () => {
           <div className={styles.userBlockWrapper}>
             {isLoggedIn && user ? (
               <UserBlock userName={user.username} userPicture={user.picture} />
-            ) : (
-              <button className={styles.loginButton} onClick={handleLoginClick}>
-                Войти
-              </button>
-            )}
+            ) : null}
           </div>
           <Navbar />
           <div className={styles.footer__social}>

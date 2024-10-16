@@ -4,7 +4,7 @@ from .views import (
     UserRegistrationView, UserLoginView, ResetPasswordView, ChangePasswordView,
     UserProfileView, landing_page, category_list, category_detail, product_list, product_detail,
     UserDetailView, AvatarUpdateView, MessageListView, MessageCreateView, ConfirmPasswordResetView,
-    CartListView, CartCreateView, TelegramWebhookView, VIPMessageListView, VIPMessageCreateView, LongPollingMessageView,
+    CartListView, CartCreateView, TelegramWebhookView, LongPollingMessageView,
     CartRemoveView, verify_token, LogoutView, ResetChangePasswordView
 )
 
@@ -33,9 +33,6 @@ urlpatterns = [
     path('messages/create/', MessageCreateView.as_view(), name='message-create'),
     path('telegram-webhook/', TelegramWebhookView.as_view(), name='telegram-webhook'),
     path('long-polling/messages/', LongPollingMessageView.as_view(), name='long_polling_messages'),
-
-    path('vip-messages/', VIPMessageListView.as_view(), name='vip-message-list'),
-    path('vip-messages/create/', VIPMessageCreateView.as_view(), name='vip-message-create'),
 
     path('cart/', CartListView.as_view(), name='cart-list'),
     path('cart/create/', CartCreateView.as_view(), name='cart-create'),

@@ -25,8 +25,6 @@ env = environ.Env(
     DB_PASSWORD=(str, 'postgres'),
     DB_HOST=(str, 'db'),
     DB_PORT=(str, '5432'),
-    VIP_TELEGRAM_BOT_TOKEN=(str, ''),
-    VIP_TELEGRAM_CHAT_ID=(str, ''),
     GENERAL_TELEGRAM_BOT_TOKEN=(str, ''),
     GENERAL_TELEGRAM_CHAT_ID=(str, ''),
 )
@@ -43,10 +41,6 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 ADMIN_EMAIL = env('ADMIN_EMAIL')
-
-# Настройки для VIP Telegram бота
-VIP_TELEGRAM_BOT_TOKEN = env('VIP_TELEGRAM_BOT_TOKEN')
-VIP_TELEGRAM_CHAT_ID = env('VIP_TELEGRAM_CHAT_ID')
 
 # Настройки для General Telegram бота
 GENERAL_TELEGRAM_BOT_TOKEN = env('GENERAL_TELEGRAM_BOT_TOKEN')

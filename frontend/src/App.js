@@ -25,7 +25,6 @@ import ChangePassword from './components/ChangePassword/ChangePassword';
 import galleries from './pages/GalleryPage/galleries';
 import marenGardenChapters from './pages/MarenGarden/MarenGardenChapters';
 import './styles/styles.scss';
-import CartButton from './pages/ShopPage/CartButton/CartButton';
 import CartPage from './pages/ShopPage/CartPage/CartPage';
 import ConspectPage from './pages/MarenGarden/MarenGardenContent/ConspectPage/ConspectPage';
 import { CartProvider } from './context/CartContext';
@@ -33,6 +32,7 @@ import OfferAgreement from './pages/ShopPage/OfferAgreement/OfferAgreement';
 import PaymentInstructionsPage from "./pages/ShopPage/PaymentInstructionsPage/PaymentInstructionsPage";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
 import ResetChangePassword from "./components/ResetChangePassword/ResetChangePassword";
+import ChatPage from "./components/ChatButton/ChatPage/ChatPage";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -75,6 +75,7 @@ function App() {
               <Route path="/lessons" element={<LessonsPage />} />
               <Route path="/lesson/:lessonId" element={<LessonPage />} />
               <Route path="/about" element={<AboutMePage />} />
+              <Route path="/chat" element={<ChatPage />} />
               <Route path="/promo" element={<PromoPage />} />
               <Route path="/masterclass"
                      element={<PrivateRoute element={<MarenGarden marenGardenChapters={marenGardenChapters} />}

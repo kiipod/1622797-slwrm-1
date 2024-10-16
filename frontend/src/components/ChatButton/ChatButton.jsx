@@ -1,23 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './ChatButton.module.scss';
 import { FaComments } from 'react-icons/fa';
-import ModalChat from './ModalChat/ModalChat';
+import { useNavigate } from 'react-router-dom';
 
 const ChatButton = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const handleToggleModal = () => {
-    console.log('Toggle Modal:', !isModalOpen);
-    setIsModalOpen(prevState => !prevState);
+  const handleChatClick = () => {
+    console.log('Navigating to chat page');
+    navigate('/chat'); // Перенаправляем на страницу чата
   };
 
   return (
-    <>
-      <div className={styles.chatButton} onClick={handleToggleModal}>
-        <FaComments />
-      </div>
-      {isModalOpen && <ModalChat onClose={handleToggleModal} />}
-    </>
+    <div className={styles.chatButton} onClick={handleChatClick}>
+      <FaComments />
+    </div>
   );
 };
 

@@ -278,7 +278,20 @@ const marenGardenChapters = [
         </Link>
       </div>
     ),
-  }
+  },
+  {
+    id: 14,
+    title: 'Присоединяйтесь к нашему Telegram-каналу!',
+    content: (
+      <div key="chapter-14">
+        <h3>Присоединяйтесь к нашему Telegram-каналу!</h3>
+        <p>Следите за новостями, получайте советы и делитесь своими успехами!</p>
+        <Link to="https://t.me/joinchat/YourTelegramChannelLink" className={styles.link}>
+          Перейти в Telegram
+        </Link>
+      </div>
+    ),
+  },
 ]
 
 export default marenGardenChapters;

@@ -15,9 +15,9 @@ from rest_framework.decorators import api_view, permission_classes
 from django.contrib.auth import authenticate, update_session_auth_hash
 from django.contrib.auth.models import User, Group
 from django.core.mail import send_mail, BadHeaderError
-from .models import Category, Activation, EcoStaff, Profile, Message, Cart, VIPMessage
+from .models import Category, Activation, EcoStaff, Profile, Message, Cart
 from .serializers import UserRegistrationSerializer, EcoStaffSerializer, UserSerializer, ChangePasswordSerializer, \
-    CategorySerializer, ProfileSerializer, MessageSerializer, CartSerializer, VIPMessageSerializer, \
+    CategorySerializer, ProfileSerializer, MessageSerializer, CartSerializer, \
     EcoStaffImageSerializer, ResetChangePasswordSerializer
 import requests
 import logging
@@ -36,8 +36,6 @@ logger = logging.getLogger(__name__)
 
 @method_decorator(csrf_exempt, name='dispatch')
 class TelegramWebhookView(View):
-    ADMIN_USER_ID = 707268574
-
     def post(self, request, *args, **kwargs):
         try:
             data = json.loads(request.body)
@@ -563,39 +561,6 @@ class MessageViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         user = self.request.user
         serializer.save(user=user, user_name=user.username)
-
-
-class VIPMessageListView(generics.ListAPIView):
-    queryset = VIPMessage.objects.all().select_related('user').order_by('timestamp')
-    serializer_class = VIPMessageSerializer
-    permission_classes = [IsAuthenticated]
-
-
-class VIPMessageCreateView(generics.CreateAPIView):
-    queryset = VIPMessage.objects.all().select_related('user')
-    serializer_class = VIPMessageSerializer
-    permission_classes = [IsAuthenticated]
-
-    def perform_create(self, serializer):
-        is_admin = self.request.user.is_staff or self.request.user.is_superuser
-        message_instance = serializer.save(user=self.request.user, is_admin=is_admin)
-        self.send_message_to_telegram(message_instance.content, self.request.user.username)
-
-    def send_message_to_telegram(self, message, username):
-        TELEGRAM_API_URL = f"https://api.telegram.org/bot{settings.VIP_TELEGRAM_BOT_TOKEN}/sendMessage"
-        VIP_CHAT_ID = settings.VIP_TELEGRAM_CHAT_ID
-
-        full_message = f"{username}: {message}"
-        response = requests.post(TELEGRAM_API_URL, json={
-            'chat_id': VIP_CHAT_ID,
-            'text': full_message,
-        })
-
-        if response.status_code != 200:
-            logger.error(f"Error sending message to Telegram: {response.status_code}, {response.text}")
-            raise Exception(f"Error sending message to Telegram: {response.status_code}, {response.text}")
-        else:
-            logger.info(f"Message sent to Telegram: {full_message}")
 
 
 class CartListView(generics.ListAPIView):

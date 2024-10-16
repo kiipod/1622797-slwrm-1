@@ -1,0 +1,133 @@
+@import '../../../styles/media';
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.chatPage {
+	max-width: 1440px;
+	padding: 110px 70px 0 70px;
+	margin: 0 auto;
+	text-align: center;
+
+	@include tablet {
+		padding: 110px 40px 0 40px;
+	}
+
+	@include mobile {
+		padding: 110px 20px 0 20px;
+	}
+
+	@include mobile-small {
+		padding: 110px 10px 0 10px;
+	}
+}
+
+.chatContainer {
+	background-color: var(--color-main);
+	border-radius: 8px;
+	position: relative;
+	width: 700px;
+	max-width: 100%;
+	display: flex;
+	flex-direction: column;
+
+	@include tablet {
+		width: 500px;
+	}
+
+	@include mobile {
+		width: 100%;
+	}
+
+	@include mobile-small {
+		width: 100%;
+	}
+
+	.chatHeader {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 15px;
+	}
+
+	.chatWindow {
+		flex: 1;
+		max-height: 100%;
+		border: 1px solid #ddd;
+		padding: 10px;
+		border-radius: 4px;
+		margin-bottom: 10px;
+	}
+
+	.message {
+		margin-bottom: 10px;
+		padding: 10px;
+		border-radius: 20px;
+		max-width: 60%;
+	}
+
+	.userMessage {
+		background-color: var(--color-light-green);
+		text-align: left;
+	}
+
+	.adminMessage {
+		background-color: var(--color-light-grey);
+		text-align: right;
+		margin-left: auto;
+	}
+
+	.timestamp {
+		font-size: 0.75em;
+		color: gray;
+		margin-top: 5px;
+		text-align: right;
+	}
+
+	.chatInput {
+		display: flex;
+		flex-direction: column;
+	}
+
+	textarea {
+		width: 100%;
+		height: 50px;
+		padding: 10px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		resize: none;
+		margin-bottom: 10px;
+	}
+
+
+	.authRequired {
+		text-align: center;
+		font-size: 18px;
+	}
+
+	.send__button {
+		width: 135px;
+		height: 30px;
+		font-family: 'Iosevka', sans-serif;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: none;
+		border-radius: 4px;
+		font-size: 1rem;
+		background-color: var(--color-blue);
+		color: var(--color-light-main);
+		transition: background-color 0.3s ease;
+
+		&:hover {
+			background-color: var(--color-green);
+		}
+	}
+
+	.authRequired p {
+		font-family: Iosevka, sans-serif;
+		margin-bottom: 20px;
+	}
+}
+
+

@@ -1,6 +1,6 @@
 # serializers.py
 from rest_framework import serializers
-from .models import Category, EcoStaff, Profile, Activation, Cart, Message, VIPMessage, EcoStaffImage
+from .models import Category, EcoStaff, Profile, Activation, Cart, Message, EcoStaffImage
 from django.contrib.auth.models import User
 
 
@@ -8,14 +8,6 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
         fields = ['id', 'user_name', 'content', 'timestamp', 'is_admin']
-
-
-class VIPMessageSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField()
-
-    class Meta:
-        model = VIPMessage
-        fields = ['id', 'user', 'content', 'timestamp', 'is_admin']
 
 
 class EcoStaffImageSerializer(serializers.ModelSerializer):
@@ -98,4 +90,3 @@ class ChangePasswordSerializer(serializers.Serializer):
 
 class ResetChangePasswordSerializer(serializers.Serializer):
     new_password = serializers.CharField(required=True)
-
