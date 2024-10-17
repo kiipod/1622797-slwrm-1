@@ -1,3 +1,5 @@
+// AuthFunctions.jsx
+
 // Функция отвечает за получение CSRF-токена из куки
 export function getCookie(name) {
   let cookieValue = null;
@@ -26,7 +28,7 @@ export const handleLogin = async (username, password, login, navigate, setError,
         'Content-Type': 'application/json',
         'X-CSRFToken': csrfToken,
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({username, password}),
     });
 
     if (response.ok) {
@@ -44,7 +46,7 @@ export const handleLogin = async (username, password, login, navigate, setError,
       setLoginAttempts((prevAttempts) => prevAttempts + 1);
     }
   } catch (error) {
-    console.error('Ошибка входа:', error);
+    // Ошибка намеренно игнорируется
     setError('Ошибка входа');
     setLoginAttempts((prevAttempts) => prevAttempts + 1);
   }
@@ -65,7 +67,7 @@ export const handleRegistration = async (password, confirmPassword, username, em
         'Content-Type': 'application/json',
         'X-CSRFToken': csrfToken,
       },
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({username, email, password}),
     });
 
     const data = await response.json();
@@ -76,7 +78,7 @@ export const handleRegistration = async (password, confirmPassword, username, em
       setIsModalOpen(true);
 
       // Автоматический вход пользователя
-      login({ id: data.user_id, email: data.email }, data.token);
+      login({id: data.user_id, email: data.email}, data.token);
 
       setIsModalOpen(false);
       navigate('/');
@@ -86,13 +88,14 @@ export const handleRegistration = async (password, confirmPassword, username, em
       setModalMessage(data.error || JSON.stringify(data) || 'Ошибка регистрации');
     }
   } catch (error) {
-    console.error('Ошибка регистрации:', error);
+    // Ошибка намеренно игнорируется
     setError('Ошибка регистрации');
     setIsModalOpen(true);
     setModalMessage('Ошибка регистрации');
   }
 };
 
+// Функция для сброса пароля
 export const handleResetPassword = async (email, setError, setModalMessage, setIsModalOpen, setMode) => {
   try {
     const response = await fetch('/api/reset-password/', {
@@ -101,7 +104,7 @@ export const handleResetPassword = async (email, setError, setModalMessage, setI
         'Content-Type': 'application/json',
         'X-CSRFToken': csrfToken,
       },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify({email}),
     });
 
     if (response.ok) {
@@ -112,7 +115,7 @@ export const handleResetPassword = async (email, setError, setModalMessage, setI
       setError('Ошибка при сбросе пароля');
     }
   } catch (error) {
-    console.error('Ошибка при сбросе пароля:', error);
+    // Ошибка намеренно игнорируется
     setError('Ошибка при сбросе пароля');
   }
 };

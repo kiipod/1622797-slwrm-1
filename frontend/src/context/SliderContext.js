@@ -1,9 +1,9 @@
 // SliderContext.js
-import React, { createContext, useState, useEffect } from 'react';
+import React, {createContext, useState, useEffect} from 'react';
 
 const SliderContext = createContext();
 
-const SliderProvider = ({ children, autoPlay, autoPlayTime, width, height, images }) => {
+const SliderProvider = ({children, autoPlay, autoPlayTime, width, height, images}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -29,10 +29,10 @@ const SliderProvider = ({ children, autoPlay, autoPlayTime, width, height, image
   };
 
   return (
-    <SliderContext.Provider value={{ currentSlide, goToSlide, nextSlide, prevSlide, width, height, images }}>
+    <SliderContext.Provider value={{currentSlide, goToSlide, nextSlide, prevSlide, width, height, images}}>
       {children}
     </SliderContext.Provider>
   );
 };
 
-export { SliderContext, SliderProvider };
+export {SliderContext, SliderProvider};

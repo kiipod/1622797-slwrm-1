@@ -1,3 +1,4 @@
+// MarenGarden.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -32,19 +33,6 @@ const MarenGarden = ({ marenGardenChapters = [] }) => {
             </div>
           </motion.div>
         ))}
-      </div>
-
-      {/* Вкладка Часто задаваемые вопросы */}
-      <div className={styles.faqSection}>
-        <h3>Часто задаваемые вопросы</h3>
-        <ul>
-          <li><strong>Вопрос 1:</strong> Как долго доступен мастер-класс?</li>
-          <li><strong>Ответ:</strong> Доступ к мастер-классу предоставляется бессрочно.</li>
-          <li><strong>Вопрос 2:</strong> Могу ли я скачать видео мастер-класса?</li>
-          <li><strong>Ответ:</strong> Нет, видео доступны только для просмотра онлайн.</li>
-          <li><strong>Вопрос 3:</strong> Как задать вопрос автору?</li>
-          <li><strong>Ответ:</strong> Вы можете связаться со мной через форму обратной связи на сайте или через наш закрытый Telegram-канал.</li>
-        </ul>
       </div>
     </div>
   );

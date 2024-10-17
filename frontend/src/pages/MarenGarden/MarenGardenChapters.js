@@ -1,3 +1,4 @@
+// MarenGardenChapters.jsx
 import React from 'react';
 import styles from './MarenGarden.module.scss';
 import {Link} from "react-router-dom";
@@ -289,6 +290,23 @@ const marenGardenChapters = [
         <Link to="https://t.me/joinchat/YourTelegramChannelLink" className={styles.link}>
           Перейти в Telegram
         </Link>
+      </div>
+    ),
+  },
+  {
+    id: 15,
+    title: 'Часто задаваемые вопросы',
+    content: (
+      <div key="chapter-15" className={styles.faqSection}>
+        <h3>Часто задаваемые вопросы</h3>
+        <ul>
+          <li><strong>Вопрос 1:</strong> Как долго доступен мастер-класс?</li>
+          <li><strong>Ответ:</strong> Доступ к мастер-классу предоставляется бессрочно.</li>
+          <li><strong>Вопрос 2:</strong> Могу ли я скачать видео мастер-класса?</li>
+          <li><strong>Ответ:</strong> Нет, видео доступны только для просмотра онлайн.</li>
+          <li><strong>Вопрос 3:</strong> Как задать вопрос автору?</li>
+          <li><strong>Ответ:</strong> Вы можете связаться со мной через форму обратной связи на сайте или через наш закрытый Telegram-канал.</li>
+        </ul>
       </div>
     ),
   },

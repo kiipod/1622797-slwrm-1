@@ -1,3 +1,4 @@
+// AboutMePage.jsx
 import styles from './AboutMePage.module.scss';
 import Photo from '../../assets/about_me_photo.jpeg';
 

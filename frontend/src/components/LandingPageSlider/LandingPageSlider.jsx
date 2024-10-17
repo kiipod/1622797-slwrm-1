@@ -1,3 +1,4 @@
+// LandingPageSlider.jsx
 import React from 'react';
 import {SliderProvider} from '../../context/SliderContext';
 import SlideList from '../Slider/SlideList/SlideList';

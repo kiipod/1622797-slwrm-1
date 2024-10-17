@@ -1,3 +1,4 @@
+// Footer.jsx
 import React from 'react';
 import styles from './Footer.module.scss';
 import LogoFooter from '../../assets/logo_DushuGreu_white.png';

@@ -1,3 +1,4 @@
+// ProductDetail.jsx
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import styles from './ProductDetail.module.scss';
@@ -27,7 +28,7 @@ const ProductDetail = () => {
         const data = await response.json();
         setProduct(data);
       } catch (error) {
-        console.error('Error fetching product:', error);
+        // Ошибка намеренно игнорируется
         setNotification('Failed to load product details');
       }
     };

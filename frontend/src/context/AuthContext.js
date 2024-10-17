@@ -1,8 +1,9 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+// AuthContext.js
+import React, {createContext, useContext, useState, useEffect, useCallback} from 'react';
 
 export const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({children}) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
 
@@ -21,7 +22,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(true);
         setUser(parsedUser);
       } catch (error) {
-        console.error('Ошибка при разборе JSON:', error);
+        // Ошибка намеренно игнорируется
         logout();
       }
     } else {
@@ -50,10 +51,10 @@ export const AuthProvider = ({ children }) => {
       } else if (response.status === 401) {
         logout(); // Выполняем выход при недействительном токене
       } else {
-        console.error('Ошибка при обновлении данных пользователя');
+        // Ошибка намеренно игнорируется
       }
     } catch (error) {
-      console.error('Ошибка при обновлении данных пользователя:', error);
+      // Ошибка намеренно игнорируется
     }
   }, []);
 
@@ -79,7 +80,7 @@ export const AuthProvider = ({ children }) => {
         });
       }
     } catch (error) {
-      console.error('Ошибка при выходе из системы:', error);
+      // Ошибка намеренно игнорируется
     } finally {
       // Очищаем данные локально вне зависимости от того, завершился ли запрос успешно
       localStorage.removeItem('user');
@@ -90,9 +91,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-      <AuthContext.Provider value={{ isLoggedIn, user, login, logout, fetchUserData }}>
-        {children}
-      </AuthContext.Provider>
+    <AuthContext.Provider value={{isLoggedIn, user, login, logout, fetchUserData}}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

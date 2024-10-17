@@ -1,3 +1,4 @@
+// Profile.jsx
 import React, {useState, useEffect, useCallback} from 'react';
 import {useAuth} from '../../context/AuthContext';
 import {useNavigate, Link} from 'react-router-dom';
@@ -31,11 +32,11 @@ const Profile = () => {
           const data = await avatarResponse.json();
           setAvatarUrl(`${data.avatar}`);
         } else {
-          console.error('Ошибка при получении аватара:', avatarResponse.statusText);
+          // Ошибка намеренно игнорируется
         }
       }
     } catch (error) {
-      console.error('Ошибка при получении данных пользователя:', error);
+      // Ошибка намеренно игнорируется
     } finally {
       setIsLoading(false);
     }
@@ -98,7 +99,7 @@ const Profile = () => {
         }
       } catch (error) {
         alert('Ошибка при загрузке аватара.');
-        console.error('Ошибка при загрузке аватара:', error);
+        // Ошибка намеренно игнорируется
       }
     }
   };

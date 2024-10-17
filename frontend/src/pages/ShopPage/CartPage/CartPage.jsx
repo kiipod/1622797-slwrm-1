@@ -1,3 +1,4 @@
+// CartPage.jsx
 import React, { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './CartPage.module.scss';
@@ -25,7 +26,7 @@ const CartPage = () => {
       setCart(Array.isArray(data) ? data[0] : data);
       updateCartCount(Array.isArray(data) ? data[0].items.length : data.items.length);
     } catch (error) {
-      console.error('Ошибка при загрузке корзины:', error);
+      // Ошибка намеренно игнорируется
       setError(error.message);
     } finally {
       setLoading(false);
@@ -67,7 +68,7 @@ const CartPage = () => {
       }
       await fetchCart();
     } catch (error) {
-      console.error('Ошибка при удалении товара из корзины:', error);
+      // Ошибка намеренно игнорируется
       setError(error.message);
     }
   };

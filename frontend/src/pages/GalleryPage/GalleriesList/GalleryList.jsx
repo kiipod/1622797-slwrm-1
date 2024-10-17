@@ -1,8 +1,9 @@
+// GalleriesList.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import styles from './GalleriesList.module.scss';
-import galleries from '../galleries'; // Import the galleries array
+import galleries from '../galleries';
 
 const GalleriesList = () => {
   return (
