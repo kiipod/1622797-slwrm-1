@@ -1,3 +1,4 @@
+// CartButton.jsx
 import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './CartButton.module.scss';
@@ -29,10 +30,10 @@ const CartButton = () => {
       if (Array.isArray(data) && data.length > 0 && Array.isArray(data[0].items)) {
         updateCartCount(data[0].items.length);
       } else {
-        console.error('Invalid cart data:', data);
+        // Ошибка намеренно игнорируется
       }
     } catch (error) {
-      console.error('Error fetching cart count:', error);
+      // Ошибка намеренно игнорируется
     }
   };
 

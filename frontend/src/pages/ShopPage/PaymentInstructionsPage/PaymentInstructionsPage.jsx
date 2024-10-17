@@ -1,17 +1,14 @@
+// PaymentInstructionsPage.jsx
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styles from './PaymentInstructionsPage.module.scss';
-import Leaf from "../../../assets/logo_DushuGreu_black.png";
 
 const PaymentInstructionsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { totalAmount } = location.state || {};
 
-  // Проверка на наличие суммы
   if (!totalAmount) {
-    // Можно отобразить сообщение о загрузке
-    // или перенаправить пользователя на страницу корзины
     navigate('/cart');
     return null;
   }
@@ -40,7 +37,12 @@ const PaymentInstructionsPage = () => {
           <li>
             Подтверждение оплаты:
             <p>После осуществления перевода, пожалуйста, отправьте подтверждение платежа на
-              email: <strong>koltsovaecoprint@yandex.ru</strong></p>
+              email: <strong>
+                <a href="mailto:koltsovaecoprint@yandex.ru">
+                  koltsovaecoprint@yandex.ru
+                </a>
+              </strong>
+            </p>
             Вы также можете подтвердить оплату через любой другой способ связи на нашем сайте.
           </li>
         </ol>
@@ -56,7 +58,6 @@ const PaymentInstructionsPage = () => {
           ДушуГрею<br />
           художник экопринта</p>
       </div>
-      <img className={styles.leaf} src={Leaf} alt="Leaf image" />
       <button className={styles.backButton} onClick={() => navigate('/cart')}>
         Вернуться в корзину
       </button>

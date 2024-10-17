@@ -1,6 +1,5 @@
 // Lessons01.js
 import React from "react";
-import styles from '../../LessonsPage.module.scss';
 
 const Lesson01 = () => {
   return (

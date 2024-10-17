@@ -1,3 +1,4 @@
+// OfferAgreement.jsx
 import React from 'react';
 import styles from './OfferAgreement.module.scss';
 

@@ -1,4 +1,4 @@
-// src/components/GalleryPage/images.js
+// images.js
 
 export const aboutHerbs = [
   {src: '/images/aboutHerbs/aboutHerbs_1.jpeg', alt: 'Image 1'},

@@ -1,5 +1,6 @@
+// ResetPassword.jsx
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styles from './ResetPassword.module.scss';
 import ResetChangePassword from "../ResetChangePassword/ResetChangePassword";
 
@@ -7,7 +8,6 @@ const ResetPassword = () => {
   const { uidb64, token } = useParams();
   const [isValidToken, setIsValidToken] = useState(false);
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
     const validateToken = async () => {
@@ -31,8 +31,7 @@ const ResetPassword = () => {
           setMessage(errorData.error || 'Ссылка для сброса пароля недействительна или устарела.');
         }
       } catch (error) {
-        console.error('Error validating token:', error);
-        setMessage('Произошла ошибка при проверке ссылки. Попробуйте позже.');
+        // Ошибка намеренно игнорируется
       }
     };
 

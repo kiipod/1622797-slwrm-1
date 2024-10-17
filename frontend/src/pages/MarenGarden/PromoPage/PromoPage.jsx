@@ -1,3 +1,4 @@
+// PromoPage.jsx
 import React, { useState } from 'react';
 import { useAuth } from '../../../context/AuthContext';
 import { useContext } from 'react';
@@ -10,7 +11,7 @@ const PromoPage = () => {
   const { user } = useAuth();
   const { addToCart } = useContext(CartContext);
   const [notification, setNotification] = useState('');
-  const navigate = useNavigate(); // Используем useNavigate для редиректа
+  const navigate = useNavigate();
 
   const settings = {
     dots: false,
@@ -34,14 +35,14 @@ const PromoPage = () => {
       return;
     }
 
-    const masterClass = { id: 43, name: 'Мастер-класс "Цветной фон"' }; // Уникальный идентификатор мастер-класса
+    const masterClass = { id: 43, name: 'Мастер-класс "Цветной фон"' };
 
     try {
       await addToCart(masterClass);
       setNotification('Мастер-класс добавлен в корзину');
-      setTimeout(() => setNotification(''), 3000); // Убираем уведомление через 3 секунды
+      setTimeout(() => setNotification(''), 3000);
     } catch (error) {
-      console.error('Error adding masterclass to cart:', error);
+      // Ошибка намеренно игнорируется
       alert(error.message || 'Не удалось добавить мастер-класс в корзину');
     }
   };

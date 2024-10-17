@@ -1,3 +1,4 @@
+// ModalResetPass.jsx
 import React, { useState } from 'react';
 import styles from './ModalResetPass.module.scss';
 
@@ -16,7 +17,7 @@ const ModalResetPass = ({isOpen, onClose, message, email, setEmail, onResetPassw
       setTimeout(() => {
         setShowSuccessMessage(false);
         onClose();
-      }, 3000); // Показывать сообщение 3 секунды
+      }, 3000);
     });
   };
 

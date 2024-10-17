@@ -1,3 +1,4 @@
+// ChangePassword.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -61,8 +62,7 @@ const ChangePassword = ({ isResetPassword = false, uidb64, token }) => {
         }
       }
     } catch (error) {
-      console.error('Ошибка при изменении пароля:', error);
-      setError('Произошла ошибка при отправке запроса');
+      // Ошибка намеренно игнорируется
     }
   };
 

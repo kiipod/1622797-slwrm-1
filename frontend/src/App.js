@@ -1,13 +1,24 @@
-import React, { useState, useEffect } from 'react';
+// App.jsx
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import './styles/styles.scss';
 
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import ChatButton from './components/ChatButton/ChatButton';
+import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
+import ResetPassword from "./components/ResetPassword/ResetPassword";
+import ResetChangePassword from "./components/ResetChangePassword/ResetChangePassword";
+import ChatPage from "./components/ChatButton/ChatPage/ChatPage";
+import ChangePassword from './components/ChangePassword/ChangePassword';
+
 import Authorization from './pages/Authorization/Authorization';
 import Profile from './pages/Profile/Profile';
 import LessonsPage from './pages/LessonsPage/LessonsPage';
+import galleries from './pages/GalleryPage/galleries';
+import marenGardenChapters from './pages/MarenGarden/MarenGardenChapters';
 import ShopPage from './pages/ShopPage/ShopPage';
 import AboutMePage from './pages/AboutMePage/AboutMePage';
 import GalleryPage from './pages/GalleryPage/GalleryPage';
@@ -18,21 +29,11 @@ import MarenGardenContent from './pages/MarenGarden/MarenGardenContent/MarenGard
 import GalleryList from './pages/GalleryPage/GalleriesList/GalleryList';
 import PromoPage from './pages/MarenGarden/PromoPage/PromoPage';
 import ProductDetail from './pages/ShopPage/ProductDetail/ProductDetail';
-import ChatButton from './components/ChatButton/ChatButton';
-import PrivacyPolicy from './components/PrivacyPolicy/PrivacyPolicy';
-import ChangePassword from './components/ChangePassword/ChangePassword';
-
-import galleries from './pages/GalleryPage/galleries';
-import marenGardenChapters from './pages/MarenGarden/MarenGardenChapters';
-import './styles/styles.scss';
 import CartPage from './pages/ShopPage/CartPage/CartPage';
 import ConspectPage from './pages/MarenGarden/MarenGardenContent/ConspectPage/ConspectPage';
 import { CartProvider } from './context/CartContext';
 import OfferAgreement from './pages/ShopPage/OfferAgreement/OfferAgreement';
 import PaymentInstructionsPage from "./pages/ShopPage/PaymentInstructionsPage/PaymentInstructionsPage";
-import ResetPassword from "./components/ResetPassword/ResetPassword";
-import ResetChangePassword from "./components/ResetChangePassword/ResetChangePassword";
-import ChatPage from "./components/ChatButton/ChatPage/ChatPage";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -53,10 +54,9 @@ function App() {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      console.log('Пользователь не залогинен, обновите UI');
+      // Ошибка намеренно игнорируется
     }
   }, [isLoggedIn]);
-
 
   return (
     <Router>

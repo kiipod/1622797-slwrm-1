@@ -1,3 +1,4 @@
+// ChatPage.jsx
 import React, {useState, useEffect, useRef} from 'react';
 import {useNavigate} from 'react-router-dom';
 import styles from './ChatPage.module.scss';
@@ -8,7 +9,7 @@ const ChatPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const lastMessageId = useRef(0);
   const messagesEndRef = useRef(null);
-  const [isPolling, setIsPolling] = useState(true);
+  const [isPolling] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -41,10 +42,10 @@ const ChatPage = () => {
           lastMessageId.current = data[data.length - 1].id;
         }
       } else {
-        console.error('Failed to fetch messages');
+        // Ошибка намеренно игнорируется
       }
     } catch (error) {
-      console.error('Error fetching messages:', error);
+      // Ошибка намеренно игнорируется
     }
   };
 
@@ -74,7 +75,7 @@ const ChatPage = () => {
         }
       } catch (error) {
         if (error.name !== 'AbortError') {
-          console.error('Error during long polling:', error);
+          // Ошибка намеренно игнорируется
         }
       }
       await new Promise(resolve => setTimeout(resolve, 20000)); // Пауза перед следующим запросом
@@ -109,7 +110,7 @@ const ChatPage = () => {
       });
       setNewMessage('');
     } else {
-      console.error('Failed to send message');
+      // Ошибка намеренно игнорируется
     }
   };
 

@@ -1,3 +1,4 @@
+// ShopPage.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ShopPage.module.scss';
@@ -15,7 +16,7 @@ const ShopPage = () => {
         const data = await response.json();
         setProducts(data);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        // Ошибка намеренно игнорируется
       }
     };
 
@@ -24,9 +25,8 @@ const ShopPage = () => {
         const response = await fetch('/api/categories/');
         const data = await response.json();
         setCategories(data);
-        console.log('Categories:', data); // Выводим категории для проверки
       } catch (error) {
-        console.error('Ошибка при получении категорий:', error);
+        // Ошибка намеренно игнорируется
       }
     };
 

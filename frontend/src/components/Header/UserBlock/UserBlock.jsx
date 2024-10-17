@@ -1,13 +1,13 @@
 // UserBlock.jsx
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../context/AuthContext';
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {useAuth} from '../../../context/AuthContext';
 import styles from './UserBlock.module.scss';
 import user_icon from '../../../assets/user_icon.png';
 import CartButton from '../../../pages/ShopPage/CartButton/CartButton';
 
-const UserBlock = ({ userName, setMode }) => {
-  const { isLoggedIn, user } = useAuth();
+const UserBlock = ({userName, setMode}) => {
+  const {isLoggedIn, user} = useAuth();
   const navigate = useNavigate();
   const [avatarUrl, setAvatarUrl] = useState(user_icon);
 
@@ -30,7 +30,7 @@ const UserBlock = ({ userName, setMode }) => {
           }
         })
         .catch(error => {
-          console.error('Error fetching avatar:', error);
+          // Ошибка намеренно игнорируется
         });
     }
   }, [isLoggedIn, user]);
@@ -70,7 +70,7 @@ const UserBlock = ({ userName, setMode }) => {
               </div>
             </div>
             <div className={styles.cartContainer}>
-              <CartButton />
+              <CartButton/>
             </div>
           </div>
         </>
@@ -78,7 +78,7 @@ const UserBlock = ({ userName, setMode }) => {
         <div className={styles.userContainer}>
           <button className={styles.loginButton} onClick={handleLoginClick}>Войти</button>
           <div className={styles.cartContainer}>
-            <CartButton />
+            <CartButton/>
           </div>
         </div>
       )}

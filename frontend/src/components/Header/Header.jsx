@@ -1,3 +1,4 @@
+// Header.jsx
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './Navbar/Navbar';
@@ -6,7 +7,6 @@ import { useAuth } from '../../context/AuthContext';
 import styles from './Header.module.scss';
 import useWindowSize from '../../hooks/useWindowSize';
 import logo_black from '../../assets/logo_DushuGreu_black.png';
-import logo_white from '../../assets/logo_DushuGreu_white.png';
 import burger_menu_icon from '../../assets/icons/burger_menu_icon.png';
 import close_icon from '../../assets/icons/close_icon.png';
 import Telegram from '../../assets/icons/telegram_icon.png';

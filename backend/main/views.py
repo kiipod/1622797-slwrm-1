@@ -506,9 +506,6 @@ class ActivateUser(APIView):
         else:
             print('Аккаунт уже активирован')
 
-        # Рендерим страницу с благодарностью
-        return render(request, 'activation_success.html', {'username': user.username})
-
 
 class UserDetailView(APIView):
     permission_classes = [IsAuthenticated]

@@ -1,3 +1,4 @@
+// Navbar.jsx
 import React from 'react';
 import style from './Navbar.module.scss';
 

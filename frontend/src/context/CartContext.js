@@ -1,8 +1,9 @@
-import React, { createContext, useState, useCallback } from 'react';
+// CartContext.jsx
+import React, {createContext, useState, useCallback} from 'react';
 
 export const CartContext = createContext();
 
-export const CartProvider = ({ children }) => {
+export const CartProvider = ({children}) => {
   const [cartCount, setCartCount] = useState(0);
 
   const updateCartCount = useCallback((count) => {
@@ -12,7 +13,7 @@ export const CartProvider = ({ children }) => {
   const addToCart = useCallback(async (item) => {
     const token = localStorage.getItem('token');
     if (!token) {
-      console.error('No token found');
+      // Ошибка намеренно игнорируется
       return;
     }
 
@@ -23,7 +24,7 @@ export const CartProvider = ({ children }) => {
           'Content-Type': 'application/json',
           'Authorization': `Token ${token}`
         },
-        body: JSON.stringify({ product_id: item.id })
+        body: JSON.stringify({product_id: item.id})
       });
 
       if (!response.ok) {
@@ -43,10 +44,10 @@ export const CartProvider = ({ children }) => {
       if (Array.isArray(cartData) && cartData.length > 0 && Array.isArray(cartData[0].items)) {
         updateCartCount(cartData[0].items.length);
       } else {
-        console.error('Invalid cart data:', cartData);
+        // Ошибка намеренно игнорируется
       }
     } catch (error) {
-      console.error('Error adding product to cart:', error);
+      // Ошибка намеренно игнорируется
     }
   }, [updateCartCount]);
 
@@ -55,7 +56,7 @@ export const CartProvider = ({ children }) => {
   }, []);
 
   return (
-    <CartContext.Provider value={{ cartCount, updateCartCount, addToCart, clearCart }}>
+    <CartContext.Provider value={{cartCount, updateCartCount, addToCart, clearCart}}>
       {children}
     </CartContext.Provider>
   );
