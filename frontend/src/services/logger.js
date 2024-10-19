@@ -1,11 +1,9 @@
-// logger.js
 export const logToServer = async (message, level = 'info') => {
   try {
     const response = await fetch('/api/logs/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Token ${localStorage.getItem('token')}`,
       },
       body: JSON.stringify({
         message,
