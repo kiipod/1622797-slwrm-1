@@ -7,16 +7,11 @@ import Leaf02 from "../../assets/leaf_2.png";
 import images from "./ImageList";
 import {AuthContext} from '../../context/AuthContext';
 import LandingPageSlider from "../../components/LandingPageSlider/LandingPageSlider";
-import {logToServer} from "../../services/logger";
 
 const LandingPage = () => {
   const {user} = useContext(AuthContext);
   const isVIP = user && user.groups && user.groups.includes('VIP');
   const isRegistered = Boolean(user);
-
-  useEffect(() => {
-    logToServer('Component loaded', 'info');
-  }, []);
 
   return (
     <div className={styles.landingPage}>

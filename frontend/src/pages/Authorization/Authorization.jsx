@@ -6,6 +6,7 @@ import styles from './Authorization.module.scss';
 import ModalResetPass from '../../components/ModalResetPass/ModalResetPass.jsx';
 import {handleLogin, handleRegistration, handleResetPassword} from './authFunctions';
 import {FaEye, FaEyeSlash} from 'react-icons/fa';
+import {logToServer} from "../../services/logger";
 
 const Authorization = ({initialMode = 'login', setAuthMode}) => {
   const [mode, setMode] = useState(initialMode);
@@ -81,16 +82,16 @@ const Authorization = ({initialMode = 'login', setAuthMode}) => {
           }
           break;
         default:
-        // Ошибка намеренно игнорируется
+          logToServer(`Неизвестный режим: ${mode}`, 'error');
       }
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при обработке формы: ${error.message}`, 'error');
       setModalMessage('Произошла ошибка. Пожалуйста, попробуйте еще раз.');
       setIsModalOpen(true);
     }
   };
 
-  const handleResetPasswordClick = async () => {
+    const handleResetPasswordClick = async () => {
     try {
       await handleResetPassword(
         resetEmail,
@@ -107,11 +108,11 @@ const Authorization = ({initialMode = 'login', setAuthMode}) => {
         setMode
       );
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при обработке сброса пароля: ${error.message}`, 'error');
       setModalMessage('Произошла ошибка при отправке запроса на сброс пароля.');
       setIsModalOpen(true);
     }
-  };
+    };
 
   const handleModalClose = () => {
     setIsModalOpen(false);

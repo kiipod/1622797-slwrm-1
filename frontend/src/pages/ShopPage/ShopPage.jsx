@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ShopPage.module.scss';
+import {logToServer} from "../../services/logger";
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
@@ -10,28 +11,24 @@ const ShopPage = () => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('/api/products/');
-        const data = await response.json();
-        setProducts(data);
+        const [productsResponse, categoriesResponse] = await Promise.all([
+          fetch('/api/products/'),
+          fetch('/api/categories/')
+        ]);
+
+        const productsData = await productsResponse.json();
+        const categoriesData = await categoriesResponse.json();
+
+        setProducts(productsData);
+        setCategories(categoriesData);
       } catch (error) {
-        // Ошибка намеренно игнорируется
+        logToServer(`Ошибка при получении данных: ${error.message}`, 'error');
       }
     };
 
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch('/api/categories/');
-        const data = await response.json();
-        setCategories(data);
-      } catch (error) {
-        // Ошибка намеренно игнорируется
-      }
-    };
-
-    fetchProducts();
-    fetchCategories();
+    fetchData();
   }, []);
 
   const filteredProducts = selectedCategory

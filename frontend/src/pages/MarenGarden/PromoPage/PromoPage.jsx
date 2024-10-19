@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../../context/CartContext';
 import Slider from "../../../components/Slider/Slider";
 import styles from './PromoPage.module.scss';
+import {logToServer} from "../../../services/logger";
 
 const PromoPage = () => {
   const { user } = useAuth();
@@ -42,9 +43,10 @@ const PromoPage = () => {
       setNotification('Мастер-класс добавлен в корзину');
       setTimeout(() => setNotification(''), 3000);
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при добавлении мастер-класса в корзину: ${error.message}`, 'error');
       alert(error.message || 'Не удалось добавить мастер-класс в корзину');
     }
+
   };
 
   return (

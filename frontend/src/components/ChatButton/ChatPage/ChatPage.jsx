@@ -2,6 +2,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {useNavigate} from 'react-router-dom';
 import styles from './ChatPage.module.scss';
+import {logToServer} from "../../../services/logger";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
@@ -42,14 +43,13 @@ const ChatPage = () => {
           lastMessageId.current = data[data.length - 1].id;
         }
       } else {
-        // Ошибка намеренно игнорируется
+        logToServer('Не удалось получить сообщения', 'error');
       }
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при получении сообщений: ${error.message}`, 'error');
     }
   };
-
-  const longPolling = async () => {
+    const longPolling = async () => {
     const token = localStorage.getItem('token');
     while (isPolling) {
       const controller = new AbortController();
@@ -75,7 +75,7 @@ const ChatPage = () => {
         }
       } catch (error) {
         if (error.name !== 'AbortError') {
-          // Ошибка намеренно игнорируется
+          logToServer(`Ошибка во время длительного опроса: ${error.message}`, 'error');
         }
       }
       await new Promise(resolve => setTimeout(resolve, 20000)); // Пауза перед следующим запросом
@@ -110,7 +110,7 @@ const ChatPage = () => {
       });
       setNewMessage('');
     } else {
-      // Ошибка намеренно игнорируется
+      logToServer('Не удалось отправить сообщение', 'error');
     }
   };
 

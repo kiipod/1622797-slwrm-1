@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import styles from './ResetChangePassword.module.scss';
 import {FaEye, FaEyeSlash} from 'react-icons/fa';
+import {logToServer} from "../../services/logger";
 
 const ResetChangePassword = ({uidb64, token}) => {
   const [newPassword, setNewPassword] = useState('');
@@ -50,7 +51,8 @@ const ResetChangePassword = ({uidb64, token}) => {
         }
       }
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при изменении пароля: ${error.message}`, 'error');
+      setError('Произошла ошибка при отправке запроса');
     }
   };
 
