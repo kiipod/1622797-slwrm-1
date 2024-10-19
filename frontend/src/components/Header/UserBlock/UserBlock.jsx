@@ -5,6 +5,7 @@ import {useAuth} from '../../../context/AuthContext';
 import styles from './UserBlock.module.scss';
 import user_icon from '../../../assets/user_icon.png';
 import CartButton from '../../../pages/ShopPage/CartButton/CartButton';
+import {logToServer} from "../../../services/logger";
 
 const UserBlock = ({userName, setMode}) => {
   const {isLoggedIn, user} = useAuth();
@@ -30,7 +31,7 @@ const UserBlock = ({userName, setMode}) => {
           }
         })
         .catch(error => {
-          // Ошибка намеренно игнорируется
+          logToServer(`Ошибка при получении аватара: ${error.message}`, 'error');
         });
     }
   }, [isLoggedIn, user]);

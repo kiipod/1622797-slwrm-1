@@ -5,6 +5,7 @@ import {useNavigate, Link} from 'react-router-dom';
 import styles from './Profile.module.scss';
 import Modal from '../../components/Modal/Modal.jsx';
 import defaultAvatar from '../../assets/default_user_icon.png';
+import {logToServer} from "../../services/logger";
 
 const Profile = () => {
   const {user, fetchUserData, logout} = useAuth();
@@ -32,11 +33,11 @@ const Profile = () => {
           const data = await avatarResponse.json();
           setAvatarUrl(`${data.avatar}`);
         } else {
-          // Ошибка намеренно игнорируется
+          logToServer(`Ошибка при получении аватара: ${avatarResponse.statusText}`, 'error');
         }
       }
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при получении данных пользователя: ${error.message}`, 'error');
     } finally {
       setIsLoading(false);
     }
@@ -98,8 +99,9 @@ const Profile = () => {
           alert('Ошибка при загрузке аватара.');
         }
       } catch (error) {
-        alert('Ошибка при загрузке аватара.');
-        // Ошибка намеренно игнорируется
+        setModalMessage('Ошибка при загрузке аватара.');
+        setIsModalOpen(true);
+        logToServer(`Ошибка при загрузке аватара: ${error.message}`, 'error');
       }
     }
   };

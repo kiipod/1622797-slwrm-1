@@ -1,5 +1,6 @@
 // AuthContext.js
 import React, {createContext, useContext, useState, useEffect, useCallback} from 'react';
+import {logToServer} from "../services/logger";
 
 export const AuthContext = createContext();
 
@@ -22,7 +23,7 @@ export const AuthProvider = ({children}) => {
         setIsLoggedIn(true);
         setUser(parsedUser);
       } catch (error) {
-        // Ошибка намеренно игнорируется
+        logToServer(`Ошибка при разборе JSON: ${error.message}`, 'error');
         logout();
       }
     } else {
@@ -49,12 +50,12 @@ export const AuthProvider = ({children}) => {
         setUser(data);
         localStorage.setItem('user', JSON.stringify(data));
       } else if (response.status === 401) {
-        logout(); // Выполняем выход при недействительном токене
+        logout();
       } else {
-        // Ошибка намеренно игнорируется
+        logToServer('Ошибка при обновлении данных пользователя', 'error');
       }
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при обновлении данных пользователя: ${error.message}`, 'error');
     }
   }, []);
 
@@ -80,7 +81,7 @@ export const AuthProvider = ({children}) => {
         });
       }
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при выходе из системы: ${error.message}`, 'error');
     } finally {
       // Очищаем данные локально вне зависимости от того, завершился ли запрос успешно
       localStorage.removeItem('user');

@@ -1,3 +1,4 @@
+// logger.js
 export const logToServer = async (message, level = 'info') => {
   try {
     const response = await fetch('/api/logs/', {

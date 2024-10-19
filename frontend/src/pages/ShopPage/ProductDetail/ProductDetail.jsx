@@ -6,6 +6,7 @@ import VerticalGallery from '../../../components/VerticalGallery/VerticalGallery
 import { CartContext } from '../../../context/CartContext';
 import { AuthContext } from "../../../context/AuthContext";
 import LightboxModal from '../../../pages/GalleryPage/LightboxModal/LightboxModal';
+import {logToServer} from "../../../services/logger";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -28,9 +29,10 @@ const ProductDetail = () => {
         const data = await response.json();
         setProduct(data);
       } catch (error) {
-        // Ошибка намеренно игнорируется
-        setNotification('Failed to load product details');
+        logToServer(`Ошибка при загрузке продукта: ${error.message}`, 'error');
+        setNotification('Не удалось загрузить детали продукта');
       }
+
     };
 
     fetchProduct();

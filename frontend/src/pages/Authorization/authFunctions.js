@@ -1,6 +1,8 @@
 // AuthFunctions.jsx
 
 // Функция отвечает за получение CSRF-токена из куки
+import {logToServer} from "../../services/logger";
+
 export function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== '') {
@@ -46,7 +48,7 @@ export const handleLogin = async (username, password, login, navigate, setError,
       setLoginAttempts((prevAttempts) => prevAttempts + 1);
     }
   } catch (error) {
-    // Ошибка намеренно игнорируется
+    logToServer(`Ошибка входа: ${error.message}`, 'error');
     setError('Ошибка входа');
     setLoginAttempts((prevAttempts) => prevAttempts + 1);
   }
@@ -88,7 +90,7 @@ export const handleRegistration = async (password, confirmPassword, username, em
       setModalMessage(data.error || JSON.stringify(data) || 'Ошибка регистрации');
     }
   } catch (error) {
-    // Ошибка намеренно игнорируется
+    logToServer(`Ошибка регистрации: ${error.message}`, 'error');
     setError('Ошибка регистрации');
     setIsModalOpen(true);
     setModalMessage('Ошибка регистрации');
@@ -115,7 +117,8 @@ export const handleResetPassword = async (email, setError, setModalMessage, setI
       setError('Ошибка при сбросе пароля');
     }
   } catch (error) {
-    // Ошибка намеренно игнорируется
-    setError('Ошибка при сбросе пароля');
+    logToServer(`Ошибка при сбросе пароля: ${error.message}`, 'error');
+    setModalMessage('Ошибка при сбросе пароля');
+    setIsModalOpen(true);
   }
 };

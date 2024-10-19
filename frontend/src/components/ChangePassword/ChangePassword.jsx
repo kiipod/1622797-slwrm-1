@@ -47,10 +47,10 @@ const ChangePassword = ({ isResetPassword = false, uidb64, token }) => {
         // Обновляем токен в локальном хранилище
         if (data.token) {
           localStorage.setItem('token', data.token);
-          login({ id: data.user_id, email: data.email }, data.token); // автоматический вход
+          login({ id: data.user_id, email: data.email }, data.token);
         }
         setSuccess('Пароль успешно изменен');
-        setTimeout(() => navigate('/'), 2000); // перенаправление на главную страницу
+        setTimeout(() => navigate('/'), 2000);
       } else {
         if (data.current_password) {
           setError(data.current_password[0]);
@@ -63,8 +63,8 @@ const ChangePassword = ({ isResetPassword = false, uidb64, token }) => {
         }
       }
     } catch (error) {
-      // Ошибка намеренно игнорируется
-      logToServer(`Error: ${error.message}`, 'error');
+      logToServer(`Ошибка при изменении пароля: ${error.message}`, 'error');
+      setError('Произошла ошибка при отправке запроса');
     }
   };
 

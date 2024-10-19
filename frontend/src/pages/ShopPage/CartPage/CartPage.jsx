@@ -3,6 +3,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './CartPage.module.scss';
 import { CartContext } from '../../../context/CartContext';
+import {logToServer} from "../../../services/logger";
 
 const CartPage = () => {
   const [cart, setCart] = useState(null);
@@ -26,7 +27,7 @@ const CartPage = () => {
       setCart(Array.isArray(data) ? data[0] : data);
       updateCartCount(Array.isArray(data) ? data[0].items.length : data.items.length);
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при загрузке корзины: ${error.message}`, 'error');
       setError(error.message);
     } finally {
       setLoading(false);
@@ -68,7 +69,7 @@ const CartPage = () => {
       }
       await fetchCart();
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при удалении товара из корзины: ${error.message}`, 'error');
       setError(error.message);
     }
   };

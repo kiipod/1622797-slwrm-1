@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './ResetPassword.module.scss';
 import ResetChangePassword from "../ResetChangePassword/ResetChangePassword";
+import {logToServer} from "../../services/logger";
 
 const ResetPassword = () => {
   const { uidb64, token } = useParams();
@@ -31,7 +32,8 @@ const ResetPassword = () => {
           setMessage(errorData.error || 'Ссылка для сброса пароля недействительна или устарела.');
         }
       } catch (error) {
-        // Ошибка намеренно игнорируется
+        logToServer(`Ошибка при проверке токена: ${error.message}`, 'error');
+        setMessage('Произошла ошибка при проверке ссылки. Попробуйте позже.');
       }
     };
 

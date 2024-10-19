@@ -1,5 +1,6 @@
 // CartContext.jsx
 import React, {createContext, useState, useCallback} from 'react';
+import {logToServer} from "../services/logger";
 
 export const CartContext = createContext();
 
@@ -13,7 +14,7 @@ export const CartProvider = ({children}) => {
   const addToCart = useCallback(async (item) => {
     const token = localStorage.getItem('token');
     if (!token) {
-      // Ошибка намеренно игнорируется
+      logToServer('Токен не найден', 'error');
       return;
     }
 
@@ -44,10 +45,10 @@ export const CartProvider = ({children}) => {
       if (Array.isArray(cartData) && cartData.length > 0 && Array.isArray(cartData[0].items)) {
         updateCartCount(cartData[0].items.length);
       } else {
-        // Ошибка намеренно игнорируется
+        logToServer(`Недействительные данные корзины: ${cartData}`, 'error');
       }
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при добавлении продукта в корзину: ${error.message}`, 'error');
     }
   }, [updateCartCount]);
 

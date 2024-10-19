@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './CartButton.module.scss';
 import cartIcon from '../../../assets/icons/shopping-cart.png';
 import { CartContext } from '../../../context/CartContext';
+import {logToServer} from "../../../services/logger";
 
 const CartButton = () => {
   const navigate = useNavigate();
@@ -30,10 +31,10 @@ const CartButton = () => {
       if (Array.isArray(data) && data.length > 0 && Array.isArray(data[0].items)) {
         updateCartCount(data[0].items.length);
       } else {
-        // Ошибка намеренно игнорируется
+        logToServer(`Ошибка при загрузке корзины: Неверные данные`, 'error');
       }
     } catch (error) {
-      // Ошибка намеренно игнорируется
+      logToServer(`Ошибка при загрузке счётчика товаров: ${error.message}`, 'error');
     }
   };
 
