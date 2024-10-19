@@ -1,3 +1,4 @@
+# settings.py
 import os
 from pathlib import Path
 import environ
@@ -54,11 +55,24 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+    },
     'handlers': {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'debug.log',
+            'filename': '/app/backend/django_logs.log',
+            'formatter': 'verbose',
+        },
+        'client_file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/app/backend/client_logs.log',
+            'formatter': 'verbose',
         },
     },
     'loggers': {
@@ -66,6 +80,11 @@ LOGGING = {
             'handlers': ['file'],
             'level': 'DEBUG',
             'propagate': True,
+        },
+        'client': {  # Изменено с 'client_logs' на 'client'
+            'handlers': ['client_file'],
+            'level': 'DEBUG',
+            'propagate': False,
         },
     },
 }

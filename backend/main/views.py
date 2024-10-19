@@ -31,7 +31,8 @@ from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('django')
+client_logger = logging.getLogger('client')
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -169,6 +170,24 @@ def product_detail(request, product_id):
         "images": [image.image.url for image in product.images.all()]
     }
     return JsonResponse(product_data, safe=False)
+
+
+class ClientLogView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        logger.debug(f"Received log request from user: {request.user}")
+        message = request.data.get('message')
+        level = request.data.get('level', 'debug')
+
+        if message:
+            log_func = getattr(client_logger, level, client_logger.debug)
+            log_func(f'Client Log: {message}')
+            logger.info(f"Logged client message: {message}")
+            return Response({'status': 'log received'}, status=status.HTTP_200_OK)
+
+        logger.warning("Received log request without message")
+        return Response({'error': 'No message provided'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class RefreshTokenView(APIView):
