@@ -5,7 +5,7 @@ from .views import (
     UserProfileView, landing_page, category_list, category_detail, product_list, product_detail,
     UserDetailView, AvatarUpdateView, MessageListView, MessageCreateView, ConfirmPasswordResetView,
     CartListView, CartCreateView, TelegramWebhookView, LongPollingMessageView,
-    CartRemoveView, verify_token, LogoutView, ResetChangePasswordView
+    CartRemoveView, verify_token, LogoutView, ResetChangePasswordView, ClientLogView
 )
 
 urlpatterns = [
@@ -37,4 +37,6 @@ urlpatterns = [
     path('cart/', CartListView.as_view(), name='cart-list'),
     path('cart/create/', CartCreateView.as_view(), name='cart-create'),
     path('cart/remove/<int:item_id>/', CartRemoveView.as_view(), name='cart-remove'),
+
+    path('logs/', ClientLogView.as_view(), name='client-logs'),
 ]
