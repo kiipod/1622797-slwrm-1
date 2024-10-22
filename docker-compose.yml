@@ -5,22 +5,37 @@ networks:
 
 services:
   backend:
-    build:
-      context: .
-      dockerfile: ./docker/Django/Dockerfile
+    image: ${REGISTRY}/backend:${IMAGE_TAG}
     networks:
       - soulwarm
     volumes:
       - django_static:/app/backend/static
       - django_media:/app/backend/media
-    expose:
-      - 8000
-    env_file:
-      - ./backend/.env
+    environment:
+      - APP_ENV=production
+      - SECRET_KEY=django-insecure-xc7xublqj_u6jh&$+++e-yrsm$8ma*x_^4gxe%upd=-f7)1h_x
+      - DJANGO_ADMIN_USER=admin_ecoprint
+      - DJANGO_ADMIN_PASSWORD=Ku5609792
+      - EMAIL_HOST=smtp.yandex.ru
+      - EMAIL_PORT=587
+      - EMAIL_USE_TLS=True
+      - EMAIL_HOST_USER=koltsovaecoprint@yandex.ru
+      - EMAIL_HOST_PASSWORD='uxftjmkthdxbgfsj'
+      - DEFAULT_FROM_EMAIL=koltsovaecoprint@yandex.ru
+      - ADMIN_EMAIL=kumaradji@me.com
+      - GENERAL_TELEGRAM_BOT_TOKEN=7289275372:AAGDhyO9xRWsO2s55qfcEjr-b0RKJXA2QMM
+      - GENERAL_TELEGRAM_CHAT_ID=707268574
+      - DATABASE=postgres
+      - DB_ENGINE=django.db.backends.postgresql
+      - DB_DATABASE=soulwarm
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
     command: gunicorn soulwarm.wsgi:application --bind 0.0.0.0:8000
 
   db:
-    image: postgres:14-alpine
+    image: ${REGISTRY}/db:${IMAGE_TAG}
     networks:
       - soulwarm
     volumes:
@@ -31,22 +46,15 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   react:
-    build:
-      context: .
-      dockerfile: ./docker/React/Dockerfile
+    image: ${REGISTRY}/react:${IMAGE_TAG}
     networks:
       - soulwarm
     volumes:
       - react_static:/app/build/static
-    expose:
-      - 3000
     command: serve -s build -l 3000
 
   nginx:
-    restart: always
-    build:
-      context: .
-      dockerfile: ./docker/Nginx/Dockerfile
+    image: ${REGISTRY}/nginx:${IMAGE_TAG}
     networks:
       - soulwarm
     volumes:

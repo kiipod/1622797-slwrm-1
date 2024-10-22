@@ -10,7 +10,6 @@ env = environ.Env(
     APP_ENV=(str, 'production'),
     SECRET_KEY=(str, ''),
     DJANGO_ADMIN_USER=(str, 'admin'),
-    DJANGO_ADMIN_EMAIL=(str, 'admin@example.com'),
     DJANGO_ADMIN_PASSWORD=(str, 'password'),
     EMAIL_HOST=(str, 'smtp.yandex.ru'),
     EMAIL_PORT=(int, 587),
