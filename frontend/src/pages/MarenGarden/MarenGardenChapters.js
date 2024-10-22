@@ -1,7 +1,7 @@
 // MarenGardenChapters.jsx
 import React from 'react';
 import styles from './MarenGarden.module.scss';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const marenGardenChapters = [
   {

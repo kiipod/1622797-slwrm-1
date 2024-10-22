@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './ResetPassword.module.scss';
 import ResetChangePassword from "../ResetChangePassword/ResetChangePassword";
-import {logToServer} from "../../services/logger";
+import { logToServer } from "../../services/logger";
 
 const ResetPassword = () => {
   const { uidb64, token } = useParams();

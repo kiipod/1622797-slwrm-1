@@ -1,7 +1,5 @@
-// AuthFunctions.jsx
-
-// Функция отвечает за получение CSRF-токена из куки
-import {logToServer} from "../../services/logger";
+// authFunction.jsx
+import { logToServer } from "../../services/logger";
 
 export function getCookie(name) {
   let cookieValue = null;

@@ -1,8 +1,8 @@
 // ChatPage.jsx
-import React, {useState, useEffect, useRef} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './ChatPage.module.scss';
-import {logToServer} from "../../../services/logger";
+import { logToServer } from "../../../services/logger";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);

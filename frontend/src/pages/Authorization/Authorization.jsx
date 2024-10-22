@@ -1,12 +1,12 @@
 // Authorization.jsx
-import React, {useState, useEffect} from 'react';
-import {useNavigate, Link} from 'react-router-dom';
-import {useAuth} from '../../context/AuthContext';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import styles from './Authorization.module.scss';
 import ModalResetPass from '../../components/ModalResetPass/ModalResetPass.jsx';
-import {handleLogin, handleRegistration, handleResetPassword} from './authFunctions';
-import {FaEye, FaEyeSlash} from 'react-icons/fa';
-import {logToServer} from "../../services/logger";
+import { handleLogin, handleRegistration, handleResetPassword } from './authFunctions';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { logToServer } from "../../services/logger";
 
 const Authorization = ({initialMode = 'login', setAuthMode}) => {
   const [mode, setMode] = useState(initialMode);

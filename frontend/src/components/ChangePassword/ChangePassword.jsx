@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import styles from './ChangePassword.module.scss';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import {logToServer} from "../../services/logger";
+import { logToServer } from "../../services/logger";
 
 const ChangePassword = ({ isResetPassword = false, uidb64, token }) => {
   const [currentPassword, setCurrentPassword] = useState('');

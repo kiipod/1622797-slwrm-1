@@ -34,7 +34,6 @@ import ConspectPage from './pages/MarenGarden/MarenGardenContent/ConspectPage/Co
 import { CartProvider } from './context/CartContext';
 import OfferAgreement from './pages/ShopPage/OfferAgreement/OfferAgreement';
 import PaymentInstructionsPage from "./pages/ShopPage/PaymentInstructionsPage/PaymentInstructionsPage";
-import {logToServer} from "./services/logger";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -52,12 +51,6 @@ function App() {
   useEffect(() => {
     fetchUserData();
   }, [fetchUserData]);
-
-  useEffect(() => {
-    if (!isLoggedIn) {
-      logToServer('Пользователь не залогинен, обновите UI', 'warning');
-    }
-  }, [isLoggedIn]);
 
   return (
     <Router>

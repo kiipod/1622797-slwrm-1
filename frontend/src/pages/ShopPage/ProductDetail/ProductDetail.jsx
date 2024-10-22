@@ -6,7 +6,7 @@ import VerticalGallery from '../../../components/VerticalGallery/VerticalGallery
 import { CartContext } from '../../../context/CartContext';
 import { AuthContext } from "../../../context/AuthContext";
 import LightboxModal from '../../../pages/GalleryPage/LightboxModal/LightboxModal';
-import {logToServer} from "../../../services/logger";
+import { logToServer } from "../../../services/logger";
 
 const ProductDetail = () => {
   const { productId } = useParams();

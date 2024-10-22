@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './CartButton.module.scss';
 import cartIcon from '../../../assets/icons/shopping-cart.png';
 import { CartContext } from '../../../context/CartContext';
-import {logToServer} from "../../../services/logger";
+import { logToServer } from "../../../services/logger";
 
 const CartButton = () => {
   const navigate = useNavigate();

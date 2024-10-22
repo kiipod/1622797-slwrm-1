@@ -1,6 +1,6 @@
 // AuthContext.js
 import React, {createContext, useContext, useState, useEffect, useCallback} from 'react';
-import {logToServer} from "../services/logger";
+import { logToServer } from "../services/logger";
 
 export const AuthContext = createContext();
 

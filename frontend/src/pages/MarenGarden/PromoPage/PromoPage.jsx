@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../../context/CartContext';
 import Slider from "../../../components/Slider/Slider";
 import styles from './PromoPage.module.scss';
-import {logToServer} from "../../../services/logger";
+import { logToServer } from "../../../services/logger";
 
 const PromoPage = () => {
   const { user } = useAuth();

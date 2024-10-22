@@ -1,9 +1,9 @@
 // ResetChangePassword.jsx
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './ResetChangePassword.module.scss';
-import {FaEye, FaEyeSlash} from 'react-icons/fa';
-import {logToServer} from "../../services/logger";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { logToServer } from "../../services/logger";
 
 const ResetChangePassword = ({uidb64, token}) => {
   const [newPassword, setNewPassword] = useState('');

@@ -1,6 +1,6 @@
 // CartContext.jsx
-import React, {createContext, useState, useCallback} from 'react';
-import {logToServer} from "../services/logger";
+import React, { createContext, useState, useCallback } from 'react';
+import { logToServer } from "../services/logger";
 
 export const CartContext = createContext();
 

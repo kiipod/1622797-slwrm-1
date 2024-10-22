@@ -1,11 +1,11 @@
 // LandingPage.jsx
-import React, {useContext, useEffect} from 'react';
+import React, { useContext } from 'react';
 import styles from './LandingPage.module.scss';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Leaf01 from "../../assets/leaf_1.png";
 import Leaf02 from "../../assets/leaf_2.png";
 import images from "./ImageList";
-import {AuthContext} from '../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 import LandingPageSlider from "../../components/LandingPageSlider/LandingPageSlider";
 
 const LandingPage = () => {

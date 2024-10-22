@@ -1,11 +1,11 @@
 // UserBlock.jsx
-import React, {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {useAuth} from '../../../context/AuthContext';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../context/AuthContext';
 import styles from './UserBlock.module.scss';
 import user_icon from '../../../assets/user_icon.png';
 import CartButton from '../../../pages/ShopPage/CartButton/CartButton';
-import {logToServer} from "../../../services/logger";
+import { logToServer } from "../../../services/logger";
 
 const UserBlock = ({userName, setMode}) => {
   const {isLoggedIn, user} = useAuth();

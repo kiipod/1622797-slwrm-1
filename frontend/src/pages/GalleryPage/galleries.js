@@ -1,5 +1,5 @@
 // galleries.js
-import {aboutHerbs, byForestRoads, outOfTime, forestFaires} from './images';
+import { aboutHerbs, byForestRoads, outOfTime, forestFaires } from './images';
 
 const formatDescription = (description) => {
   return description.split('\n').filter(paragraph => paragraph.trim() !== '').map((paragraph, index) => (

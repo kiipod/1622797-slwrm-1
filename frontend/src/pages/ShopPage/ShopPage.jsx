@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ShopPage.module.scss';
-import {logToServer} from "../../services/logger";
+import { logToServer } from "../../services/logger";
 
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
