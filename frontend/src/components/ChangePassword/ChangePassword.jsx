@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import styles from './ChangePassword.module.scss';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { logToServer } from "../../services/logger";
+import { getCookie } from "../../pages/Authorization/authFunctions";
 
 const ChangePassword = ({ isResetPassword = false, uidb64, token }) => {
   const [currentPassword, setCurrentPassword] = useState('');
@@ -15,6 +16,7 @@ const ChangePassword = ({ isResetPassword = false, uidb64, token }) => {
   const [success, setSuccess] = useState(null);
   const { login } = useAuth();
   const navigate = useNavigate();
+  const csrfToken = getCookie('csrftoken');
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
@@ -28,7 +30,8 @@ const ChangePassword = ({ isResetPassword = false, uidb64, token }) => {
       let url = '/api/change-password/';
       let headers = {
         'Content-Type': 'application/json',
-        'Authorization': `Token ${localStorage.getItem('token')}`
+        'Authorization': `Token ${localStorage.getItem('token')}`,
+        'X-CSRFToken': csrfToken
       };
       let body = {
         new_password: newPassword,
@@ -50,7 +53,7 @@ const ChangePassword = ({ isResetPassword = false, uidb64, token }) => {
           login({ id: data.user_id, email: data.email }, data.token);
         }
         setSuccess('Пароль успешно изменен');
-        setTimeout(() => navigate('/'), 2000);
+        setTimeout(() => navigate('/profile'), 2000);
       } else {
         if (data.current_password) {
           setError(data.current_password[0]);
@@ -63,7 +66,7 @@ const ChangePassword = ({ isResetPassword = false, uidb64, token }) => {
         }
       }
     } catch (error) {
-      logToServer(`Ошибка при изменении пароля: ${error.message}`, 'error');
+      logToServer(`Ошибка при изменении пароля: ${error.message}`, 'error'); // НЕ РАБОТАЕТ
       setError('Произошла ошибка при отправке запроса');
     }
   };

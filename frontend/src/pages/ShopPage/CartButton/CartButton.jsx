@@ -30,8 +30,6 @@ const CartButton = () => {
       const data = await response.json();
       if (Array.isArray(data) && data.length > 0 && Array.isArray(data[0].items)) {
         updateCartCount(data[0].items.length);
-      } else {
-        logToServer(`Ошибка при загрузке корзины: Неверные данные`, 'error');
       }
     } catch (error) {
       logToServer(`Ошибка при загрузке счётчика товаров: ${error.message}`, 'error');

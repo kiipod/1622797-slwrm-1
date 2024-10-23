@@ -1,3 +1,4 @@
+// logger.js
 import { getCookie } from "../pages/Authorization/authFunctions";
 
 // Получаем CSRF-токен

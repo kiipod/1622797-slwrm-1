@@ -36,6 +36,7 @@ const CartPage = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('agreementChecked');
     clearCart();
     navigate('/');
   };

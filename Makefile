@@ -1,16 +1,16 @@
 #DOCKER
 docker-up:
-	docker compose up -d --build
+	docker compose -f docker-compose-production.yml up -d --build
 docker-down:
-	docker compose down --remove-orphans
+	docker compose -f docker-compose-production.yml down --remove-orphans
 docker-down-clear:
-	docker compose down -v --remove-orphans
+	docker compose -f docker-compose-production.yml down -v --remove-orphans
 prod-docker-build:
 	REGISTRY=cr.selcloud.ru/{registry_name} IMAGE_TAG=master-1 make docker-build push
 dev-docker-build:
 	REGISTRY=local IMAGE_TAG=master-1 make docker-build
 dev-run-build:
-	REGISTRY=local IMAGE_TAG=master-1 docker compose -f docker-compose.yml up -d
+	REGISTRY=local IMAGE_TAG=master-1 docker compose -f docker-compose-production.yml up -d
 
 docker-build: docker-build-backend docker-build-nginx docker-build-react docker-build-db
 
@@ -42,9 +42,9 @@ deploy:
 	ssh -o StrictHostKeyChecking=no deploy@${HOST} -p ${PORT} 'docker network create --driver=overlay traefik-public || true'
 	ssh -o StrictHostKeyChecking=no deploy@${HOST} -p ${PORT} 'rm -rf soulwarm_${BUILD_NUMBER} && mkdir soulwarm_${BUILD_NUMBER}'
 
-	envsubst < docker-compose.yml > docker-compose-env.yml
-	scp -o StrictHostKeyChecking=no -P ${PORT} docker-compose-env.yml deploy@${HOST}:soulwarm_${BUILD_NUMBER}/docker-compose.yml
-	rm -f docker-compose-env.yml
+	envsubst < docker-compose-production.yml > docker-compose-production-env.yml
+	scp -o StrictHostKeyChecking=no -P ${PORT} docker-compose-production-env.yml deploy@${HOST}:soulwarm_${BUILD_NUMBER}/docker-compose.yml
+	rm -f docker-compose-production-env.yml
 
 	ssh -o StrictHostKeyChecking=no deploy@${HOST} -p ${PORT} 'mkdir soulwarm_${BUILD_NUMBER}/secrets'
 	ssh -o StrictHostKeyChecking=no deploy@${HOST} -p ${PORT} 'cp .secrets/* soulwarm_${BUILD_NUMBER}/secrets'

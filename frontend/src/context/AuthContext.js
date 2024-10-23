@@ -1,5 +1,5 @@
 // AuthContext.js
-import React, {createContext, useContext, useState, useEffect, useCallback} from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { logToServer } from "../services/logger";
 
 export const AuthContext = createContext();
@@ -86,6 +86,7 @@ export const AuthProvider = ({children}) => {
       // Очищаем данные локально вне зависимости от того, завершился ли запрос успешно
       localStorage.removeItem('user');
       localStorage.removeItem('token');
+      localStorage.removeItem('agreementChecked');
       setIsLoggedIn(false);
       setUser(null);
     }
